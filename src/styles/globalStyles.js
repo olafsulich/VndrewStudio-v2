@@ -20,6 +20,10 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
 
   }
+
+  li{
+    list-style:none;
+  }
   
   body {
     width:100%;

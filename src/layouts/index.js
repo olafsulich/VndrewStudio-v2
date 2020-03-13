@@ -5,7 +5,6 @@ import GlobalStyle from '../styles/globalStyles';
 const Layout = ({ children }) => (
   <>
     <GlobalStyle />
-    <p>Hello</p>
     {children}
   </>
 );
