@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import Image from 'gatsby-image';
 import Arrow from '../assets/arrow.svg';
 
-const StyledContainer = styled.div`
+const StyledContainer = styled.section`
   width: 100%;
   max-height: 300%;
   display: grid;
@@ -70,11 +70,11 @@ const StyledTextWrapper = styled.article`
     `}
 `;
 
-const StyledHeading = styled.h2`
+const StyledHeading = styled.h3`
   font-size: 2.4rem;
   color: #292929;
   margin-bottom: 1rem;
-  font-weight: 700;
+  font-weight: 600;
 `;
 
 const StyledText = styled.p`
@@ -90,7 +90,7 @@ const StyledLink = styled(Link)`
   font-size: 2.4rem;
   color: #292929;
   margin-top: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   position: relative;
 `;
 
@@ -103,18 +103,20 @@ const StyledSVGIcon = styled(Arrow)`
   transform: translate(-50%, -50%);
 `;
 
-const Gallery = () => {
-  const data = useStaticQuery(graphql`
-    {
-      file(name: { eq: "session1" }) {
-        childImageSharp {
-          fluid(quality: 100) {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
+const query = graphql`
+  {
+    file(name: { eq: "session1" }) {
+      childImageSharp {
+        fluid(quality: 100) {
+          ...GatsbyImageSharpFluid_tracedSVG
         }
       }
     }
-  `);
+  }
+`;
+
+const Gallery = () => {
+  const data = useStaticQuery(query);
 
   return (
     <StyledContainer>

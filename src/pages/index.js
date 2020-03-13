@@ -5,6 +5,7 @@ import { graphql } from 'gatsby';
 import Image from 'gatsby-image';
 import Navigation from '../components/organisms/Navigation';
 import Gallery from '../components/Gallery';
+import About from '../components/About';
 
 const StyledContainer = styled.section`
   width: 100%;
@@ -51,7 +52,7 @@ const StyledHeading = styled.h2`
   font-size: 2.4rem;
   color: #292929;
   margin-bottom: 1rem;
-  font-weight: 700;
+  font-weight: 600;
 `;
 
 const StyledText = styled.p`
@@ -84,6 +85,7 @@ const IndexPage = ({ data }) => {
         </StyledTextWrapper>
       </StyledContainer>
       <Gallery />
+      <About />
     </>
   );
 };
