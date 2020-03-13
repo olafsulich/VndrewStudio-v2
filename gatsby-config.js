@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: 'Vndrew Studio',
-    description: 'It\'s photographer website',
+    description: "It's photographer website",
     author: 'Olaf Sulich',
   },
   plugins: [
@@ -24,6 +24,14 @@ module.exports = {
             variants: ['400', '600', '700', '800'],
           },
         ],
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /assets/,
+        },
       },
     },
     'gatsby-transformer-sharp',

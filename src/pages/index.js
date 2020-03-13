@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Image from 'gatsby-image';
 import Navigation from '../components/organisms/Navigation';
+import Gallery from '../components/Gallery';
 
 const StyledContainer = styled.section`
   width: 100%;
@@ -62,6 +63,30 @@ const StyledText = styled.p`
   font-weight: 400;
 `;
 
+const IndexPage = ({ data }) => {
+  return (
+    <>
+      <StyledContainer>
+        <Navigation />
+        <StyledImageWrapper>
+          <Image fluid={data.file.childImageSharp.fluid} />
+          <StyledFigcaption>MROK</StyledFigcaption>
+        </StyledImageWrapper>
+        <StyledTextWrapper>
+          <StyledHeading>
+            <StyledHeading>Mrok jest w nas</StyledHeading>
+            <StyledText>
+              Największym zbrodniarzem we wszechświecie jest niestety człowiek
+              Wiem, bo jestem nim, nie cofnę czasu, by wyleczyć zbrodnię Jestem
+              swoim bogiem, ale także swoim katem
+            </StyledText>
+          </StyledHeading>
+        </StyledTextWrapper>
+      </StyledContainer>
+      <Gallery />
+    </>
+  );
+};
 export const query = graphql`
   {
     file(name: { eq: "main" }) {
@@ -73,28 +98,6 @@ export const query = graphql`
     }
   }
 `;
-
-const IndexPage = ({ data }) => {
-  return (
-    <StyledContainer>
-      <Navigation />
-      <StyledImageWrapper>
-        <Image fluid={data.file.childImageSharp.fluid} />
-        <StyledFigcaption>MROK</StyledFigcaption>
-      </StyledImageWrapper>
-      <StyledTextWrapper>
-        <StyledHeading>
-          <StyledHeading>Mrok jest w nas</StyledHeading>
-          <StyledText>
-            Największym zbrodniarzem we wszechświecie jest niestety człowiek
-            Wiem, bo jestem nim, nie cofnę czasu, by wyleczyć zbrodnię Jestem
-            swoim bogiem, ale także swoim katem
-          </StyledText>
-        </StyledHeading>
-      </StyledTextWrapper>
-    </StyledContainer>
-  );
-};
 
 IndexPage.propTypes = {
   data: PropTypes.object.isRequired,
