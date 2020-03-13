@@ -6,6 +6,7 @@ import Image from 'gatsby-image';
 import Navigation from '../components/organisms/Navigation';
 import Gallery from '../components/Gallery';
 import About from '../components/About';
+import Footer from '../components/Footer';
 
 const StyledContainer = styled.section`
   width: 100%;
@@ -86,6 +87,7 @@ const IndexPage = ({ data }) => {
       </StyledContainer>
       <Gallery />
       <About />
+      <Footer />
     </>
   );
 };

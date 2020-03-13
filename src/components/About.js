@@ -10,8 +10,8 @@ const StyledContainer = styled.section`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 6rem;
-  padding: 5rem 10rem;
+  margin-top: 14rem;
+  padding: 8rem 10rem;
 `;
 
 const StyledHeading = styled.h4`
