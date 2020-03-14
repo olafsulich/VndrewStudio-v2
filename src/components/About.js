@@ -12,6 +12,12 @@ const StyledContainer = styled.section`
   flex-direction: column;
   margin-top: 2rem;
   padding: 4rem 1rem;
+
+  @media only screen and (min-width: 700px) {
+    order: 2;
+    padding: 4rem 3rem;
+    height: 100%;
+  }
 `;
 
 const StyledHeading = styled.h4`
@@ -19,6 +25,10 @@ const StyledHeading = styled.h4`
   color: #292929;
   margin-bottom: 1rem;
   font-weight: 700;
+
+  @media only screen and (min-width: 700px) {
+    font-size: 5rem;
+  }
 `;
 
 const StyledAboutWrapper = styled.article`
@@ -28,6 +38,10 @@ const StyledAboutWrapper = styled.article`
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
+
+  @media only screen and (min-width: 700px) {
+    flex-direction: row;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -45,6 +59,9 @@ const StyledSocialsWrapper = styled.div`
   flex-direction: column;
   width: 100%;
   margin-top: 2rem;
+  @media only screen and (min-width: 700px) {
+    order: 1;
+  }
 `;
 
 const StyledText = styled.p`
@@ -55,6 +72,10 @@ const StyledText = styled.p`
   line-height: 2.8rem;
   font-weight: 400;
   margin-left: 1rem;
+
+  @media only screen and (min-width: 700px) {
+    order: 2;
+  }
 `;
 
 const StyledSVGIcon = styled(Arrow)`

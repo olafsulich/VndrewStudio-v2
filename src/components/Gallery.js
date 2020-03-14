@@ -28,7 +28,7 @@ const StyledTextWrapper = styled.article`
   order: 3;
   @media only screen and (min-width: 700px) {
     width: 45%;
-    padding: 4rem;
+    padding: 4rem 2rem;
   }
 `;
 
@@ -72,15 +72,16 @@ const StyledContainer = styled.section`
 
    @media only screen and (min-width: 700px) {
     
-  ${StyledWrapper}:nth-of-type(1) > ${StyledTextWrapper} {
+  /* ${StyledWrapper}:nth-of-type(1) > ${StyledTextWrapper} {
     margin: 0 auto 8rem auto;
-  }
+  } */
 
   ${StyledWrapper}:nth-of-type(2) > ${StyledImageWrapper} {
     order: 2;
   }
 
   ${StyledWrapper}:nth-of-type(2) > ${StyledTextWrapper} {
+    margin-left:4rem;
     order: 1;
   }
 

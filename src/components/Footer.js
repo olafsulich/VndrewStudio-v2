@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'gatsby';
 import Logo from '../assets/footer-logo.svg';
 import Heart from '../assets/heart.svg';
@@ -24,9 +24,13 @@ const StyledWrapper = styled.div`
   justify-content: space-around;
   flex-direction: column;
   padding: 1rem;
+
+  @media only screen and (min-width: 700px) {
+    margin: 3rem 5rem;
+  }
 `;
 
-const StyledColumsWrapper = styled.div`
+const StyledColumnsWrapper = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -34,16 +38,28 @@ const StyledColumsWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   padding: 2rem;
+
+  @media only screen and (min-width: 700px) {
+    flex-direction: row;
+    justify-content: space-around;
+  }
 `;
 
 const StyledColumn = styled.div`
   width: 100%;
   height: 50%;
-  /* border-left: 3px solid #8888; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @media only screen and (min-width: 700px) {
+    border-left: 3px solid #8888;
+    width: auto;
+    padding: 1rem 0 0 1.5rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
 `;
 
 const StyledLogo = styled(Logo)`
@@ -63,6 +79,15 @@ const StyledText = styled.p`
   font-weight: 400;
   margin-bottom: 1.5rem;
   background-color: #000;
+
+  ${({ copyrights }) =>
+    copyrights &&
+    css`
+      @media only screen and (min-width: 700px) {
+        width: 100%;
+        text-align: start;
+      }
+    `}
 `;
 
 const StyledLink = styled(Link)`
@@ -82,7 +107,7 @@ const Footer = () => {
       <StyledWrapper>
         <StyledLogo />
       </StyledWrapper>
-      <StyledColumsWrapper>
+      <StyledColumnsWrapper>
         <StyledColumn>
           <StyledHeading>Social media</StyledHeading>
           <StyledLink>Facebook</StyledLink>
@@ -94,8 +119,8 @@ const Footer = () => {
           <StyledText>@vndrew_photos</StyledText>
           <StyledText>vndrewstudio@gmail.com</StyledText>
         </StyledColumn>
-      </StyledColumsWrapper>
-      <StyledText>
+      </StyledColumnsWrapper>
+      <StyledText copyrights>
         Created with
         <StyledHeart />
         by Olaf Sulich
