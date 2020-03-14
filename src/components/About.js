@@ -10,29 +10,30 @@ const StyledContainer = styled.section`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 14rem;
-  padding: 8rem 10rem;
+  margin-top: 2rem;
+  padding: 4rem 1rem;
 `;
 
 const StyledHeading = styled.h4`
-  font-size: 10rem;
+  font-size: 3rem;
   color: #292929;
   margin-bottom: 1rem;
   font-weight: 700;
 `;
 
 const StyledAboutWrapper = styled.article`
-  width: 80%;
-  padding: 7rem 0rem 0 6rem;
+  width: 100%;
+  padding: 2rem 1rem 0 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-direction: column;
 `;
 
 const StyledLink = styled(Link)`
-  font-size: 3rem;
+  font-size: 1.6rem;
   color: #292929;
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
   font-weight: 600;
   position: relative;
 `;
@@ -42,23 +43,24 @@ const StyledSocialsWrapper = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   flex-direction: column;
-  width: 40%;
+  width: 100%;
+  margin-top: 2rem;
 `;
 
 const StyledText = styled.p`
-  font-size: 2.6rem;
+  font-size: 1.4rem;
   color: #292929;
   opacity: 0.5;
-  width: 45%;
-  line-height: 4rem;
+  width: 100%;
+  line-height: 2.8rem;
   font-weight: 400;
-  margin-left: 3rem;
+  margin-left: 1rem;
 `;
 
 const StyledSVGIcon = styled(Arrow)`
   position: absolute;
-  width: 25px;
-  height: 20px;
+  width: 15px;
+  height: 11.5px;
   top: 50%;
   right: -45%;
   transform: translate(-50%, -50%);
@@ -69,6 +71,12 @@ const About = () => {
     <StyledContainer>
       <StyledHeading>O MNIE</StyledHeading>
       <StyledAboutWrapper>
+        <StyledText>
+          Największym zbrodniarzem we wszechświecie jest niestety człowiek Wiem,
+          bo jestem nim, nie cofnę czasu, Największym zbrodniarzem we
+          wszechświecie jest niestety człowiek Wiem, bo jestem nim, nie cofnę
+          czasu,
+        </StyledText>
         <StyledSocialsWrapper>
           <StyledLink>
             Instagram
@@ -83,12 +91,6 @@ const About = () => {
             <StyledSVGIcon />
           </StyledLink>
         </StyledSocialsWrapper>
-        <StyledText>
-          Największym zbrodniarzem we wszechświecie jest niestety człowiek Wiem,
-          bo jestem nim, nie cofnę czasu, Największym zbrodniarzem we
-          wszechświecie jest niestety człowiek Wiem, bo jestem nim, nie cofnę
-          czasu,
-        </StyledText>
       </StyledAboutWrapper>
     </StyledContainer>
   );

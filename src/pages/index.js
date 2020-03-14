@@ -12,9 +12,9 @@ const StyledContainer = styled.section`
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  padding: 5rem 0 12rem 20%;
+  padding: 5rem 0 3rem 0;
   flex-direction: column;
 `;
 
@@ -23,6 +23,10 @@ const StyledImageWrapper = styled.figure`
   height: 90%;
   position: relative;
 
+  @media only screen and (min-width: 700px) {
+    width: 90%;
+  }
+
   img {
     width: 100% !important;
     height: auto !important;
@@ -30,45 +34,55 @@ const StyledImageWrapper = styled.figure`
 `;
 
 const StyledFigcaption = styled.figcaption`
-  font-size: 10rem;
+  font-size: 3rem;
   font-weight: 800;
   position: absolute;
-  top: 85%;
+  top: 80%;
   left: 4%;
   mix-blend-mode: difference;
   color: #fff;
+
+  @media only screen and (min-width: 700px) {
+    top: 85%;
+  }
 `;
 
 const StyledTextWrapper = styled.article`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   flex-direction: column;
-  padding: 2rem 1rem 2rem 0;
+  padding: 2rem;
   margin-top: 3rem;
+  @media only screen and (min-width: 700px) {
+    width: 90%;
+    align-items: flex-start;
+    padding: 2rem 0;
+    margin-top: 1rem;
+  }
 `;
 
 const StyledHeading = styled.h2`
-  font-size: 2.4rem;
+  font-size: 1.6rem;
   color: #292929;
   margin-bottom: 1rem;
   font-weight: 600;
 `;
 
 const StyledText = styled.p`
-  font-size: 2rem;
+  font-size: 1.2rem;
   color: #292929;
   opacity: 0.5;
-  width: 40%;
-  line-height: 4rem;
+  width: 100%;
+  line-height: 2.8rem;
   font-weight: 400;
 `;
 
 const IndexPage = ({ data }) => {
   return (
     <>
-      <StyledContainer>
+      <StyledContainer id="home">
         <Navigation />
         <StyledImageWrapper>
           <Image fluid={data.file.childImageSharp.fluid} />

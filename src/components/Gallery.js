@@ -4,32 +4,32 @@ import styled, { css } from 'styled-components';
 import Image from 'gatsby-image';
 import Arrow from '../assets/arrow.svg';
 
-const StyledContainer = styled.section`
-  width: 100%;
-  max-height: 300%;
-  display: grid;
-  grid-template-columns: 1fr;
-  align-items: center;
-  justify-items: center;
-`;
-
 const StyledWrapper = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  flex-direction: column;
+`;
+
+const StyledTextWrapper = styled.article`
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  padding: 4rem 2rem;
+  order: 3;
 `;
 
 const StyledImageWrapper = styled.figure`
-  width: 45%;
+  width: 100%;
   height: 100%;
+  min-width: 100%;
+  min-height: 470px;
   position: relative;
-
-  :nth-of-type(2),
-  :nth-of-type(3) {
-    margin-bottom: 8rem;
-  }
+  order: 2;
 
   img {
     width: 100%;
@@ -38,56 +38,64 @@ const StyledImageWrapper = styled.figure`
 `;
 
 const StyledFigcaption = styled.figcaption`
-  font-size: 8rem;
+  font-size: 3rem;
   font-weight: 800;
   position: absolute;
   top: 92%;
   right: 5%;
   color: #f2f2f2;
   text-transform: uppercase;
-
-  ${({ middle }) =>
-    middle &&
-    css`
-      right: auto;
-      left: 5%;
-    `}
 `;
 
-const StyledTextWrapper = styled.article`
-  width: 45%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-direction: column;
-  margin: 0 auto;
-  transform: translate(25%, 50%);
+const StyledContainer = styled.section`
+  width: 100%;
+  height:100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+/* 
+  ${StyledWrapper}:nth-of-type(1) > ${StyledTextWrapper} {
+    margin: 0 auto 8rem auto;
+  }
 
-  ${({ first }) =>
-    first &&
-    css`
-      margin: 0 auto 8rem auto;
-    `}
+  ${StyledWrapper}:nth-of-type(2) > ${StyledImageWrapper} {
+    order: 2;
+  }
+
+  ${StyledWrapper}:nth-of-type(2) > ${StyledTextWrapper} {
+    order: 1;
+  }
+
+  // prettier-ignore
+  ${StyledWrapper}:nth-of-type(2) > ${StyledImageWrapper} > ${StyledFigcaption} {
+    right: auto;
+    left: 5%;
+  }
+
+  ${StyledWrapper}:nth-of-type(3) > ${StyledImageWrapper} > ${StyledFigcaption} {
+    top: calc(92% );
+  } */
 `;
 
 const StyledHeading = styled.h3`
-  font-size: 2.4rem;
+  font-size: 1.6rem;
   color: #292929;
   margin-bottom: 1rem;
   font-weight: 600;
 `;
 
 const StyledText = styled.p`
-  font-size: 2rem;
+  font-size: 1.4rem;
   color: #292929;
   opacity: 0.5;
-  width: 60%;
-  line-height: 4rem;
+  width: 100%;
+  line-height: 2.8rem;
   font-weight: 400;
 `;
 
 const StyledLink = styled(Link)`
-  font-size: 2.4rem;
+  font-size: 1.6rem;
   color: #292929;
   margin-top: 1rem;
   font-weight: 600;
@@ -96,8 +104,8 @@ const StyledLink = styled(Link)`
 
 const StyledSVGIcon = styled(Arrow)`
   position: absolute;
-  width: 25px;
-  height: 20px;
+  width: 15px;
+  height: 11.5px;
   top: 50%;
   right: -65%;
   transform: translate(-50%, -50%);
@@ -105,10 +113,12 @@ const StyledSVGIcon = styled(Arrow)`
 
 const query = graphql`
   {
-    file(name: { eq: "session1" }) {
-      childImageSharp {
-        fluid(quality: 100) {
-          ...GatsbyImageSharpFluid_tracedSVG
+    allFile(filter: { absolutePath: { regex: "/sessions/" } }) {
+      nodes {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
         }
       }
     }
@@ -117,63 +127,32 @@ const query = graphql`
 
 const Gallery = () => {
   const data = useStaticQuery(query);
-
+  const photosURLs = [...data.allFile.nodes];
   return (
-    <StyledContainer>
-      <StyledWrapper>
-        <StyledImageWrapper>
-          <Image fluid={data.file.childImageSharp.fluid} />
-          <StyledFigcaption>Prisoner</StyledFigcaption>
-        </StyledImageWrapper>
-        <StyledTextWrapper first>
-          <StyledHeading>Prisoner in self mind</StyledHeading>
-          <StyledText>
-            Największym zbrodniarzem we wszechświecie jest niestety człowiek
-            Wiem, bo jestem nim, nie cofnę czasu, by wyleczyć zbrodnię Jestem
-            swoim bogiem, ale także swoim katem
-          </StyledText>
-          <StyledLink>
-            Zobacz
-            <StyledSVGIcon />
-          </StyledLink>
-        </StyledTextWrapper>
-      </StyledWrapper>
-      <StyledWrapper>
-        <StyledTextWrapper>
-          <StyledHeading>Prisoner in self mind</StyledHeading>
-          <StyledText>
-            Największym zbrodniarzem we wszechświecie jest niestety człowiek
-            Wiem, bo jestem nim, nie cofnę czasu, by wyleczyć zbrodnię Jestem
-            swoim bogiem, ale także swoim katem
-          </StyledText>
-          <StyledLink>
-            Zobacz
-            <StyledSVGIcon />
-          </StyledLink>
-        </StyledTextWrapper>
-        <StyledImageWrapper>
-          <Image fluid={data.file.childImageSharp.fluid} />
-          <StyledFigcaption middle>Prisoner</StyledFigcaption>
-        </StyledImageWrapper>
-      </StyledWrapper>
-      <StyledWrapper>
-        <StyledImageWrapper>
-          <Image fluid={data.file.childImageSharp.fluid} />
-          <StyledFigcaption>Prisoner</StyledFigcaption>
-        </StyledImageWrapper>
-        <StyledTextWrapper>
-          <StyledHeading>Prisoner in self mind</StyledHeading>
-          <StyledText>
-            Największym zbrodniarzem we wszechświecie jest niestety człowiek
-            Wiem, bo jestem nim, nie cofnę czasu, by wyleczyć zbrodnię Jestem
-            swoim bogiem, ale także swoim katem
-          </StyledText>
-          <StyledLink>
-            Zobacz
-            <StyledSVGIcon />
-          </StyledLink>
-        </StyledTextWrapper>
-      </StyledWrapper>
+    <StyledContainer id="works">
+      {photosURLs.map(photo => {
+        const fluid = photo.childImageSharp.fluid;
+        return (
+          <StyledWrapper>
+            <StyledImageWrapper>
+              <Image fluid={fluid} />
+              <StyledFigcaption>Prisoner</StyledFigcaption>
+            </StyledImageWrapper>
+            <StyledTextWrapper>
+              <StyledHeading>Prisoner in self mind</StyledHeading>
+              <StyledText>
+                Największym zbrodniarzem we wszechświecie jest niestety człowiek
+                Wiem, bo jestem nim, nie cofnę czasu, by wyleczyć zbrodnię
+                Jestem swoim bogiem, ale także swoim katem
+              </StyledText>
+              <StyledLink>
+                Zobacz
+                <StyledSVGIcon />
+              </StyledLink>
+            </StyledTextWrapper>
+          </StyledWrapper>
+        );
+      })}
     </StyledContainer>
   );
 };
