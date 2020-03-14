@@ -18,6 +18,22 @@ const StyledContainer = styled.section`
     padding: 4rem 3rem;
     height: 100%;
   }
+
+  @media only screen and (min-width: 900px) {
+    padding: 8rem;
+  }
+
+  @media only screen and (min-width: 1100px) {
+    padding: 12rem 14rem;
+  }
+
+  @media only screen and (min-width: 1500px) {
+    padding: 18rem 20rem;
+  }
+
+  @media only screen and (min-width: 1600px) {
+    padding: 24rem 30rem;
+  }
 `;
 
 const StyledHeading = styled.h4`
@@ -28,6 +44,21 @@ const StyledHeading = styled.h4`
 
   @media only screen and (min-width: 700px) {
     font-size: 5rem;
+  }
+
+  @media only screen and (min-width: 900px) {
+    font-size: 6.5rem;
+    margin-bottom: 3rem;
+  }
+
+  @media only screen and (min-width: 1300px) {
+    font-size: 7rem;
+    margin-bottom: 4rem;
+  }
+
+  @media only screen and (min-width: 1600px) {
+    font-size: 8.5rem;
+    margin-bottom: 5rem;
   }
 `;
 
@@ -50,6 +81,19 @@ const StyledLink = styled(Link)`
   margin-bottom: 2rem;
   font-weight: 600;
   position: relative;
+
+  @media only screen and (min-width: 900px) {
+    font-size: 1.8rem;
+  }
+
+  @media only screen and (min-width: 1300px) {
+    font-size: 2rem;
+  }
+
+  @media only screen and (min-width: 1600px) {
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+  }
 `;
 
 const StyledSocialsWrapper = styled.div`
@@ -76,6 +120,21 @@ const StyledText = styled.p`
   @media only screen and (min-width: 700px) {
     order: 2;
   }
+
+  @media only screen and (min-width: 900px) {
+    font-size: 1.6rem;
+    line-height: 3.2rem;
+  }
+
+  @media only screen and (min-width: 1300px) {
+    font-size: 1.8rem;
+    line-height: 3.6rem;
+  }
+
+  @media only screen and (min-width: 1600px) {
+    font-size: 2rem;
+    line-height: 4rem;
+  }
 `;
 
 const StyledSVGIcon = styled(Arrow)`
@@ -85,6 +144,11 @@ const StyledSVGIcon = styled(Arrow)`
   top: 50%;
   right: -45%;
   transform: translate(-50%, -50%);
+
+  @media only screen and (min-width: 1600px) {
+    width: 20px;
+    height: 14px;
+  }
 `;
 
 const About = () => {

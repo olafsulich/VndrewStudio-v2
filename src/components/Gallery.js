@@ -60,6 +60,18 @@ const StyledFigcaption = styled.figcaption`
   right: 5%;
   color: #f2f2f2;
   text-transform: uppercase;
+
+  @media only screen and (min-width: 900px) {
+    font-size: 3.7rem;
+  }
+
+  @media only screen and (min-width: 1100px) {
+    font-size: 5rem;
+  }
+
+  @media only screen and (min-width: 1600px) {
+    font-size: 6.5rem;
+  }
 `;
 
 const StyledContainer = styled.section`
@@ -71,17 +83,13 @@ const StyledContainer = styled.section`
   justify-items: center;
 
    @media only screen and (min-width: 700px) {
-    
-  /* ${StyledWrapper}:nth-of-type(1) > ${StyledTextWrapper} {
-    margin: 0 auto 8rem auto;
-  } */
 
   ${StyledWrapper}:nth-of-type(2) > ${StyledImageWrapper} {
     order: 2;
   }
 
   ${StyledWrapper}:nth-of-type(2) > ${StyledTextWrapper} {
-    margin-left:4rem;
+    margin-left:8rem;
     order: 1;
   }
 
@@ -94,7 +102,7 @@ const StyledContainer = styled.section`
   ${StyledWrapper}:nth-of-type(3) > ${StyledImageWrapper} > ${StyledFigcaption} {
     top: calc(92% );
   }
-  }
+}
 
 `;
 
@@ -103,15 +111,38 @@ const StyledHeading = styled.h3`
   color: #292929;
   margin-bottom: 1rem;
   font-weight: 600;
+
+  @media only screen and (min-width: 900px) {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+  }
+
+  @media only screen and (min-width: 1100px) {
+    font-size: 2.4rem;
+    margin-bottom: 1.4rem;
+  }
 `;
 
 const StyledText = styled.p`
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: #292929;
   opacity: 0.5;
   width: 100%;
   line-height: 2.8rem;
   font-weight: 400;
+
+  @media only screen and (min-width: 900px) {
+    font-size: 1.4rem;
+    line-height: 3rem;
+  }
+
+  @media only screen and (min-width: 1100px) {
+    font-size: 1.8rem;
+    line-height: 3.2rem;
+  }
+  @media only screen and (min-width: 1400px) {
+    width: 60%;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -120,6 +151,11 @@ const StyledLink = styled(Link)`
   margin-top: 1rem;
   font-weight: 600;
   position: relative;
+
+  @media only screen and (min-width: 1600px) {
+    font-size: 2rem;
+    margin-top: 2rem;
+  }
 `;
 
 const StyledSVGIcon = styled(Arrow)`
@@ -129,6 +165,11 @@ const StyledSVGIcon = styled(Arrow)`
   top: 50%;
   right: -65%;
   transform: translate(-50%, -50%);
+
+  @media only screen and (min-width: 1600px) {
+    width: 20px;
+    height: 14px;
+  }
 `;
 
 const query = graphql`

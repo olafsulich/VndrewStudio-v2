@@ -6,14 +6,26 @@ import Heart from '../assets/heart.svg';
 
 const StyledContainer = styled.footer`
   width: 100%;
-  height: 60vh;
+  height: 80vh;
   background-color: #151615;
-  margin-top: 2rem;
+  margin-top: 0rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   padding: 1rem 2rem;
+
+  @media only screen and (min-width: 600px) {
+    height: 60vh;
+  }
+
+  @media only screen and (min-width: 900px) {
+    padding: 3rem 4rem;
+  }
+
+  @media only screen and (min-width: 1600px) {
+    padding: 6rem 8rem 3rem 8rem;
+  }
 `;
 
 const StyledWrapper = styled.div`
@@ -27,6 +39,11 @@ const StyledWrapper = styled.div`
 
   @media only screen and (min-width: 700px) {
     margin: 3rem 5rem;
+  }
+
+  @media only screen and (min-width: 1600px) {
+    height: 20%;
+    margin: 0rem 5rem;
   }
 `;
 
@@ -42,6 +59,15 @@ const StyledColumnsWrapper = styled.div`
   @media only screen and (min-width: 700px) {
     flex-direction: row;
     justify-content: space-around;
+  }
+  @media only screen and (min-width: 900px) {
+    align-items: flex-start;
+    margin-top: 4rem;
+  }
+
+  @media only screen and (min-width: 1100px) {
+    justify-content: flex-end;
+    margin-top: 0rem;
   }
 `;
 
@@ -60,10 +86,29 @@ const StyledColumn = styled.div`
     align-items: flex-start;
     justify-content: flex-start;
   }
+  @media only screen and (min-width: 900px) {
+    height: 70%;
+  }
+
+  @media only screen and (min-width: 1100px) {
+    height: 80%;
+    margin: 2rem 5rem;
+  }
+  @media only screen and (min-width: 1600px) {
+    height: 90%;
+    margin: 2rem 7rem;
+  }
 `;
 
 const StyledLogo = styled(Logo)`
   width: 18rem;
+
+  @media only screen and (min-width: 900px) {
+    width: 24rem;
+  }
+  @media only screen and (min-width: 1600px) {
+    width: 28rem;
+  }
 `;
 
 const StyledHeading = styled.h4`
@@ -71,10 +116,17 @@ const StyledHeading = styled.h4`
   color: #fff5f5;
   margin-bottom: 2rem;
   font-weight: 400;
+  @media only screen and (min-width: 1100px) {
+    font-size: 2.2rem;
+  }
+  @media only screen and (min-width: 1600px) {
+    margin-bottom: 2.4rem;
+    font-size: 2.6rem;
+  }
 `;
 
 const StyledText = styled.p`
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: #888888;
   font-weight: 400;
   margin-bottom: 1.5rem;
@@ -88,6 +140,11 @@ const StyledText = styled.p`
         text-align: start;
       }
     `}
+
+  @media only screen and (min-width: 1600px) {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
 `;
 
 const StyledLink = styled(Link)`
@@ -95,6 +152,10 @@ const StyledLink = styled(Link)`
   color: #888888;
   margin-bottom: 2rem;
   font-weight: 400;
+
+  @media only screen and (min-width: 1600px) {
+    font-size: 2rem;
+  }
 `;
 
 const StyledHeart = styled(Heart)`

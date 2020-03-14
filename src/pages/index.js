@@ -26,6 +26,9 @@ const StyledImageWrapper = styled.figure`
   @media only screen and (min-width: 700px) {
     width: 90%;
   }
+  @media only screen and (min-width: 1400px) {
+    width: 80%;
+  }
 
   img {
     width: 100% !important;
@@ -37,13 +40,21 @@ const StyledFigcaption = styled.figcaption`
   font-size: 3rem;
   font-weight: 800;
   position: absolute;
-  top: 80%;
-  left: 4%;
+  top: 90%;
+  left: 5%;
   mix-blend-mode: difference;
   color: #fff;
 
-  @media only screen and (min-width: 700px) {
-    top: 85%;
+  @media only screen and (min-width: 900px) {
+    font-size: 3.7rem;
+  }
+
+  @media only screen and (min-width: 1100px) {
+    font-size: 5rem;
+  }
+
+  @media only screen and (min-width: 1600px) {
+    font-size: 6.5rem;
   }
 `;
 
@@ -61,6 +72,15 @@ const StyledTextWrapper = styled.article`
     padding: 2rem 0;
     margin-top: 1rem;
   }
+  @media only screen and (min-width: 900px) {
+    align-items: flex-start;
+  }
+  @media only screen and (min-width: 1100px) {
+    padding: 4rem 0;
+  }
+  @media only screen and (min-width: 1400px) {
+    width: 80%;
+  }
 `;
 
 const StyledHeading = styled.h2`
@@ -68,6 +88,13 @@ const StyledHeading = styled.h2`
   color: #292929;
   margin-bottom: 1rem;
   font-weight: 600;
+
+  @media only screen and (min-width: 900px) {
+    font-size: 1.8rem;
+  }
+  @media only screen and (min-width: 1100px) {
+    font-size: 2.2rem;
+  }
 `;
 
 const StyledText = styled.p`
@@ -77,6 +104,15 @@ const StyledText = styled.p`
   width: 100%;
   line-height: 2.8rem;
   font-weight: 400;
+
+  @media only screen and (min-width: 900px) {
+    width: 50%;
+    font-size: 1.4rem;
+    line-height: 3.6rem;
+  }
+  @media only screen and (min-width: 1100px) {
+    font-size: 1.8rem;
+  }
 `;
 
 const IndexPage = ({ data }) => {
