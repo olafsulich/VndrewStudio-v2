@@ -11,6 +11,11 @@ const StyledWrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  @media only screen and (min-width: 700px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
 const StyledTextWrapper = styled.article`
@@ -21,6 +26,10 @@ const StyledTextWrapper = styled.article`
   flex-direction: column;
   padding: 4rem 2rem;
   order: 3;
+  @media only screen and (min-width: 700px) {
+    width: 45%;
+    padding: 4rem;
+  }
 `;
 
 const StyledImageWrapper = styled.figure`
@@ -30,6 +39,12 @@ const StyledImageWrapper = styled.figure`
   min-height: 470px;
   position: relative;
   order: 2;
+
+  @media only screen and (min-width: 700px) {
+    min-width: auto;
+    min-height: 400px;
+    width: 45%;
+  }
 
   img {
     width: 100%;
@@ -54,7 +69,9 @@ const StyledContainer = styled.section`
   grid-template-columns: 1fr;
   align-items: center;
   justify-items: center;
-/* 
+
+   @media only screen and (min-width: 700px) {
+    
   ${StyledWrapper}:nth-of-type(1) > ${StyledTextWrapper} {
     margin: 0 auto 8rem auto;
   }
@@ -75,7 +92,9 @@ const StyledContainer = styled.section`
 
   ${StyledWrapper}:nth-of-type(3) > ${StyledImageWrapper} > ${StyledFigcaption} {
     top: calc(92% );
-  } */
+  }
+  }
+
 `;
 
 const StyledHeading = styled.h3`
