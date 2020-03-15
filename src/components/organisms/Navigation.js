@@ -15,7 +15,7 @@ const StyledWrapper = styled.nav`
     padding: 0 3rem 0 0;
   }
   @media only screen and (min-width: 1400px) {
-    width: 80%;
+    width: 85%;
     padding: 0 5rem 0 0;
   }
   @media only screen and (min-width: 1600px) {

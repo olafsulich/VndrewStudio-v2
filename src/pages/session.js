@@ -199,7 +199,7 @@ const session = () => {
         {photosURLs.map(photo => {
           const fluid = photo.childImageSharp.fluid;
           return (
-            <StyledImageWrapper>
+            <StyledImageWrapper key={fluid}>
               <Image fluid={fluid} />
             </StyledImageWrapper>
           );

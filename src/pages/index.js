@@ -27,7 +27,7 @@ const StyledImageWrapper = styled.figure`
     width: 90%;
   }
   @media only screen and (min-width: 1400px) {
-    width: 80%;
+    width: 85%;
   }
 
   img {
@@ -41,9 +41,8 @@ const StyledFigcaption = styled.figcaption`
   font-weight: 800;
   position: absolute;
   top: 90%;
-  left: 5%;
-  mix-blend-mode: difference;
-  color: #fff;
+  left: 2%;
+  color: #f2f2f2;
 
   @media only screen and (min-width: 900px) {
     font-size: 3.7rem;
@@ -67,7 +66,7 @@ const StyledTextWrapper = styled.article`
   padding: 2rem;
   margin-top: 3rem;
   @media only screen and (min-width: 700px) {
-    width: 90%;
+    width: 85%;
     align-items: flex-start;
     padding: 2rem 0;
     margin-top: 1rem;
@@ -79,7 +78,7 @@ const StyledTextWrapper = styled.article`
     padding: 4rem 0;
   }
   @media only screen and (min-width: 1400px) {
-    width: 80%;
+    width: 85%;
   }
 `;
 
