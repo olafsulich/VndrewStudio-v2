@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Image from 'gatsby-image';
-import Navigation from '../components/organisms/Navigation';
+import Navigation from '../components/Navigation';
 import Gallery from '../components/Gallery';
 import About from '../components/About';
 import Footer from '../components/Footer';

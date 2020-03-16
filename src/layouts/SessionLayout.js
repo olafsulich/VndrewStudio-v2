@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { graphql, Link } from 'gatsby';
 import Image from 'gatsby-image';
 import Footer from '../components/Footer';
-import Navigation from '../components/organisms/Navigation';
+import Navigation from '../components/Navigation';
 import Arrow from '../assets/arrow.svg';
 
 const StyledContainer = styled.section`

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
+import { graphql, useStaticQuery, Link } from 'gatsby';
 import Arrow from '../assets/arrow.svg';
 
 const StyledContainer = styled.section`
@@ -75,7 +75,7 @@ const StyledAboutWrapper = styled.article`
   }
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.a`
   font-size: 1.6rem;
   color: #292929;
   margin-bottom: 2rem;
@@ -151,27 +151,39 @@ const StyledSVGIcon = styled(Arrow)`
   }
 `;
 
+const query = graphql`
+  {
+    datoCmsAbout {
+      description
+      instagram
+      youtube
+      facebook
+    }
+  }
+`;
+
 const About = () => {
+  const data = useStaticQuery(query);
+  const { description, instagram, youtube, facebook } = data.datoCmsAbout;
   return (
     <StyledContainer>
       <StyledHeading>O MNIE</StyledHeading>
       <StyledAboutWrapper>
-        <StyledText>
-          Największym zbrodniarzem we wszechświecie jest niestety człowiek Wiem,
-          bo jestem nim, nie cofnę czasu, Największym zbrodniarzem we
-          wszechświecie jest niestety człowiek Wiem, bo jestem nim, nie cofnę
-          czasu,
-        </StyledText>
+        <StyledText>{description}</StyledText>
         <StyledSocialsWrapper>
-          <StyledLink>
+          <StyledLink
+            href={instagram}
+            target="_blank"
+            rel="noreferrer noopener"
+          >
             Instagram
             <StyledSVGIcon />
           </StyledLink>
-          <StyledLink>
+          <StyledLink href={facebook} target="_blank" rel="noreferrer noopener">
             Facebook
             <StyledSVGIcon />
           </StyledLink>
-          <StyledLink>
+          <StyledLink href={youtube} target="_blank" rel="noreferrer noopener">
             Youtube
             <StyledSVGIcon />
           </StyledLink>

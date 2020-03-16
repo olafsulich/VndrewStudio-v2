@@ -68,7 +68,7 @@ const Navigation = () => {
   return (
     <StyledWrapper>
       <StyledLogo>
-        <Link to="/"> VS</Link>
+        <Link to="/">VS</Link>
       </StyledLogo>
       <StyledList>
         <StyledListItem>Strona główna</StyledListItem>
