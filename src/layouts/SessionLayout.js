@@ -6,6 +6,7 @@ import Image from 'gatsby-image';
 import Footer from '../components/Footer';
 import Navigation from '../components/Navigation';
 import Arrow from '../assets/arrow.svg';
+import Text from '../components/Text';
 
 const StyledContainer = styled.section`
   width: 100%;
@@ -61,38 +62,7 @@ const StyledHeading = styled.h2`
   }
 `;
 
-const StyledText = styled.p`
-  font-size: 1.6rem;
-  color: #292929;
-  opacity: 0.5;
-  width: 100%;
-  line-height: 2.8rem;
-  font-weight: 400;
-
-  @media only screen and (min-width: 650px) {
-    width: 60%;
-  }
-
-  /* @media only screen and (min-width: 700px) {
-    width: 50%;
-  } */
-
-  @media only screen and (min-width: 900px) {
-    font-size: 1.8rem;
-    line-height: 3.2rem;
-  }
-
-  @media only screen and (min-width: 1300px) {
-    line-height: 3.6rem;
-    width: 45%;
-  }
-
-  @media only screen and (min-width: 1600px) {
-    font-size: 2.2rem;
-    line-height: 4rem;
-  }
-`;
-const StyledLink = styled(Link)`
+const StyledLink = styled.a`
   font-size: 1.6rem;
   color: #292929;
   margin-top: 2rem;
@@ -203,10 +173,14 @@ const SessionLayout = ({ data }) => {
             case 'titleContent':
               return <StyledHeading>{session[sessionKey]}</StyledHeading>;
             case 'descriptionContent':
-              return <StyledText>{session[sessionKey]}</StyledText>;
+              return <Text session>{session[sessionKey]}</Text>;
             case 'instagramLink':
               return (
-                <StyledLink to={session[sessionKey]}>
+                <StyledLink
+                  href={session[sessionKey]}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
                   Instagram
                   <StyledSVGIcon />
                 </StyledLink>
@@ -223,10 +197,10 @@ const SessionLayout = ({ data }) => {
         if (sessionKey === 'imageGallery') {
           return (
             <StyledGridWrapper>
-              {session.imageGallery.map(image => {
+              {session.imageGallery.map(({ fluid }) => {
                 return (
                   <StyledImageWrapper>
-                    <Image fluid={image.fluid} />
+                    <Image fluid={fluid} />
                   </StyledImageWrapper>
                 );
               })}

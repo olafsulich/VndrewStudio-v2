@@ -3,6 +3,7 @@ import { graphql, useStaticQuery, Link } from 'gatsby';
 import styled, { css } from 'styled-components';
 import Image from 'gatsby-image';
 import Arrow from '../assets/arrow.svg';
+import Text from './Text';
 
 const StyledWrapper = styled.div`
   width: 100%;
@@ -123,28 +124,6 @@ const StyledHeading = styled.h3`
   }
 `;
 
-const StyledText = styled.p`
-  font-size: 1.2rem;
-  color: #292929;
-  opacity: 0.5;
-  width: 100%;
-  line-height: 2.8rem;
-  font-weight: 400;
-
-  @media only screen and (min-width: 900px) {
-    font-size: 1.4rem;
-    line-height: 3rem;
-  }
-
-  @media only screen and (min-width: 1100px) {
-    font-size: 1.8rem;
-    line-height: 3.2rem;
-  }
-  @media only screen and (min-width: 1400px) {
-    width: 60%;
-  }
-`;
-
 const StyledLink = styled(Link)`
   font-size: 1.6rem;
   color: #292929;
@@ -194,20 +173,26 @@ const query = graphql`
 const Gallery = () => {
   const data = useStaticQuery(query);
   const sessionItems = [...data.allDatoCmsSession.nodes];
-  console.log(sessionItems);
   return (
     <StyledContainer id="works">
       {sessionItems.map(
-        ({ id, title, subtitle, description, featuredImage, slug }) => {
+        ({
+          id,
+          title,
+          subtitle,
+          description,
+          featuredImage: { fluid },
+          slug,
+        }) => {
           return (
             <StyledWrapper key={id}>
               <StyledImageWrapper>
-                <Image fluid={featuredImage.fluid} />
+                <Image fluid={fluid} />
                 <StyledTitle>{title}</StyledTitle>
               </StyledImageWrapper>
               <StyledTextWrapper>
                 <StyledHeading>{subtitle}</StyledHeading>
-                <StyledText>{description}</StyledText>
+                <Text>{description}</Text>
                 <StyledLink to={`sesje/${slug}`}>
                   Zobacz
                   <StyledSVGIcon />

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import Arrow from '../assets/arrow.svg';
+import Text from './Text';
 
 const StyledContainer = styled.section`
   width: 100%;
@@ -108,35 +109,6 @@ const StyledSocialsWrapper = styled.div`
   }
 `;
 
-const StyledText = styled.p`
-  font-size: 1.4rem;
-  color: #292929;
-  opacity: 0.5;
-  width: 100%;
-  line-height: 2.8rem;
-  font-weight: 400;
-  margin-left: 1rem;
-
-  @media only screen and (min-width: 700px) {
-    order: 2;
-  }
-
-  @media only screen and (min-width: 900px) {
-    font-size: 1.6rem;
-    line-height: 3.2rem;
-  }
-
-  @media only screen and (min-width: 1300px) {
-    font-size: 1.8rem;
-    line-height: 3.6rem;
-  }
-
-  @media only screen and (min-width: 1600px) {
-    font-size: 2rem;
-    line-height: 4rem;
-  }
-`;
-
 const StyledSVGIcon = styled(Arrow)`
   position: absolute;
   width: 15px;
@@ -169,7 +141,7 @@ const About = () => {
     <StyledContainer>
       <StyledHeading>O MNIE</StyledHeading>
       <StyledAboutWrapper>
-        <StyledText>{description}</StyledText>
+        <Text about>{description}</Text>
         <StyledSocialsWrapper>
           <StyledLink
             href={instagram}

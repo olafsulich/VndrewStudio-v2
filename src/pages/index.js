@@ -7,7 +7,7 @@ import Navigation from '../components/Navigation';
 import Gallery from '../components/Gallery';
 import About from '../components/About';
 import Footer from '../components/Footer';
-
+import Text from '../components/Text';
 const StyledContainer = styled.section`
   width: 100%;
   height: 100%;
@@ -97,37 +97,28 @@ const StyledHeading = styled.h2`
   }
 `;
 
-const StyledText = styled.p`
-  font-size: 1.2rem;
-  color: #292929;
-  opacity: 0.5;
-  width: 100%;
-  line-height: 2.8rem;
-  font-weight: 400;
-
-  @media only screen and (min-width: 900px) {
-    width: 50%;
-    font-size: 1.4rem;
-    line-height: 3.6rem;
-  }
-  @media only screen and (min-width: 1100px) {
-    font-size: 1.8rem;
-  }
-`;
-
-const IndexPage = ({ data }) => {
+const IndexPage = ({
+  data: {
+    datoCmsMain: {
+      image: { fluid },
+      title,
+      subtitle,
+      description,
+    },
+  },
+}) => {
   return (
     <>
       <StyledContainer id="home">
         <Navigation />
         <StyledImageWrapper>
-          <Image fluid={data.datoCmsMain.image.fluid} />
-          <StyledFigcaption>{data.datoCmsMain.title}</StyledFigcaption>
+          <Image fluid={fluid} />
+          <StyledFigcaption>{title}</StyledFigcaption>
         </StyledImageWrapper>
         <StyledTextWrapper>
           <StyledHeading>
-            <StyledHeading>{data.datoCmsMain.subtitle}</StyledHeading>
-            <StyledText>{data.datoCmsMain.description}</StyledText>
+            <StyledHeading>{subtitle}</StyledHeading>
+            <Text main>{description}</Text>
           </StyledHeading>
         </StyledTextWrapper>
       </StyledContainer>

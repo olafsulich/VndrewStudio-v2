@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import Logo from '../assets/footer-logo.svg';
 import Heart from '../assets/heart.svg';
+import Text from './Text';
 
 const StyledContainer = styled.footer`
   width: 100%;
@@ -125,28 +126,6 @@ const StyledHeading = styled.h4`
   }
 `;
 
-const StyledText = styled.p`
-  font-size: 1.6rem;
-  color: #888888;
-  font-weight: 400;
-  margin-bottom: 1.5rem;
-  background-color: #000;
-
-  ${({ copyrights }) =>
-    copyrights &&
-    css`
-      @media only screen and (min-width: 700px) {
-        width: 100%;
-        text-align: start;
-      }
-    `}
-
-  @media only screen and (min-width: 1600px) {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-  }
-`;
-
 const StyledLink = styled.a`
   font-size: 1.6rem;
   color: #888888;
@@ -160,6 +139,7 @@ const StyledLink = styled.a`
 
 const StyledHeart = styled(Heart)`
   margin: 0 1rem;
+  opacity: 0.5;
 `;
 
 const query = graphql`
@@ -207,15 +187,15 @@ const Footer = () => {
         </StyledColumn>
         <StyledColumn>
           <StyledHeading>Kontakt</StyledHeading>
-          <StyledText>{instagramName}</StyledText>
-          <StyledText>{email}</StyledText>
+          <Text footer>{instagramName}</Text>
+          <Text footer>{email}</Text>
         </StyledColumn>
       </StyledColumnsWrapper>
-      <StyledText copyrights>
+      <Text copyrights>
         Created with
         <StyledHeart />
         by Olaf Sulich
-      </StyledText>
+      </Text>
     </StyledContainer>
   );
 };
