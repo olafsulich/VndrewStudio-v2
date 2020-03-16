@@ -1,7 +1,7 @@
 import React from 'react';
+import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-import styled, { css } from 'styled-components';
 import Image from 'gatsby-image';
 import Arrow from '../assets/arrow.svg';
 import Text from './Text';
@@ -77,6 +77,32 @@ const StyledTitle = styled.h2`
   }
 `;
 
+const StyledContainer = styled.section`
+  width: 100%;
+  height:100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  justify-items: center;
+   @media only screen and (min-width: 700px) {
+  ${StyledWrapper}:nth-of-type(2) > ${StyledImageWrapper} {
+    order: 2;
+  }
+  ${StyledWrapper}:nth-of-type(2) > ${StyledTextWrapper} {
+    margin-left:8rem;
+    order: 1;
+  }
+  // prettier-ignore
+  ${StyledWrapper}:nth-of-type(2) > ${StyledImageWrapper} > ${StyledTitle} {
+    right: auto;
+    left: 5%;
+  }
+  ${StyledWrapper}:nth-of-type(3) > ${StyledImageWrapper} > ${StyledTitle} {
+    top: calc(92% );
+  }
+}
+`;
+
 const StyledLink = styled(Link)`
   font-size: 1.6rem;
   color: #292929;
@@ -104,34 +130,44 @@ const StyledSVGIcon = styled(Arrow)`
   }
 `;
 
-const Session = ({ id, fluid, title, subtitle, description, slug }) => {
+const SessionsList = ({ sessionItems }) => {
   return (
-    <StyledWrapper key={id}>
-      <StyledImageWrapper>
-        <Image fluid={fluid} />
-        <StyledTitle>{title}</StyledTitle>
-      </StyledImageWrapper>
-      <StyledTextWrapper>
-        <Heading gallery as="h3">
-          {subtitle}
-        </Heading>
-        <Text>{description}</Text>
-        <StyledLink to={`sesje/${slug}`}>
-          Zobacz
-          <StyledSVGIcon />
-        </StyledLink>
-      </StyledTextWrapper>
-    </StyledWrapper>
+    <StyledContainer>
+      {sessionItems.map(
+        ({
+          id,
+          title,
+          subtitle,
+          description,
+          featuredImage: { fluid },
+          slug,
+        }) => {
+          return (
+            <StyledWrapper key={id}>
+              <StyledImageWrapper>
+                <Image fluid={fluid} />
+                <StyledTitle>{title}</StyledTitle>
+              </StyledImageWrapper>
+              <StyledTextWrapper>
+                <Heading gallery as="h3">
+                  {subtitle}
+                </Heading>
+                <Text>{description}</Text>
+                <StyledLink to={`sesje/${slug}`}>
+                  Zobacz
+                  <StyledSVGIcon />
+                </StyledLink>
+              </StyledTextWrapper>
+            </StyledWrapper>
+          );
+        }
+      )}
+    </StyledContainer>
   );
 };
 
-Session.propTypes = {
-  id: PropTypes.string.isRequired,
-  fluid: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  slug: PropTypes.string.isRequired,
+SessionsList.propTypes = {
+  sessionItems: PropTypes.object.isRequired,
 };
 
-export default Session;
+export default SessionsList;
