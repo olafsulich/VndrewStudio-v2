@@ -8,6 +8,7 @@ import Navigation from '../components/Navigation';
 import Arrow from '../assets/arrow.svg';
 import Text from '../components/Text';
 import Heading from '../components/Heading';
+import GridImagesList from '../components/GridImagesList';
 
 const StyledContainer = styled.section`
   width: 100%;
@@ -165,25 +166,7 @@ const SessionLayout = ({ data }) => {
           }
         })}
       </StyledWrapper>
-
-      {sessionDetails.map(session => {
-        const sessionKey = Object.keys(session)[1];
-
-        if (sessionKey === 'imageGallery') {
-          return (
-            <StyledGridWrapper>
-              {session.imageGallery.map(({ fluid }) => {
-                return (
-                  <StyledImageWrapper>
-                    <Image fluid={fluid} />
-                  </StyledImageWrapper>
-                );
-              })}
-            </StyledGridWrapper>
-          );
-        }
-      })}
-
+      <GridImagesList sessionDetails={sessionDetails} />
       <Footer />
     </StyledContainer>
   );
