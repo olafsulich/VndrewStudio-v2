@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { graphql, Link } from 'gatsby';
 import Image from 'gatsby-image';
 import Footer from '../components/Footer';
@@ -150,7 +151,7 @@ const StyledGridWrapper = styled.div`
   }
 `;
 
-const StyledImageWrapper = styled.figure`
+const StyledImageWrapper = styled.div`
   width: 100%;
   height: 100%;
   min-width: 100%;
@@ -166,46 +167,80 @@ const StyledImageWrapper = styled.figure`
 export const query = graphql`
   query sessionPage($id: String!) {
     datoCmsSession(id: { eq: $id }) {
-      id
-      title
-      subtitle
-      description
-      featuredImage {
-        url
+      sessionDetails {
+        ... on DatoCmsDescription {
+          descriptionContent
+        }
+        ... on DatoCmsTitle {
+          titleContent
+        }
+        ... on DatoCmsInstagram {
+          instagramLink
+        }
+        ... on DatoCmsImage {
+          imageGallery {
+            fluid {
+              ...GatsbyDatoCmsFluid_tracedSVG
+            }
+          }
+        }
       }
     }
   }
 `;
 
-const SessionLayout = () => {
+const SessionLayout = ({ data }) => {
+  const sessionDetails = data.datoCmsSession.sessionDetails;
+
   return (
     <StyledContainer>
       <Navigation />
       <StyledWrapper>
-        <StyledHeading>PRISONER</StyledHeading>
-        <StyledText>
-          Największym zbrodniarzem we wszechświecie jest niestety człowiek Wiem,
-          bo jestem nim, nie cofnę czasu, by wyleczyć zbrodnię Jestem swoim
-          bogiem, ale także swoim katem
-        </StyledText>
-        <StyledLink>
-          Instagram
-          <StyledSVGIcon />
-        </StyledLink>
+        {sessionDetails.map(session => {
+          const sessionKey = Object.keys(session)[1];
+
+          switch (sessionKey) {
+            case 'titleContent':
+              return <StyledHeading>{session[sessionKey]}</StyledHeading>;
+            case 'descriptionContent':
+              return <StyledText>{session[sessionKey]}</StyledText>;
+            case 'instagramLink':
+              return (
+                <StyledLink to={session[sessionKey]}>
+                  Instagram
+                  <StyledSVGIcon />
+                </StyledLink>
+              );
+            default:
+              return null;
+          }
+        })}
       </StyledWrapper>
-      <StyledGridWrapper>
-        {/* {photosURLs.map(photo => {
-          const fluid = photo.childImageSharp.fluid;
+
+      {sessionDetails.map(session => {
+        const sessionKey = Object.keys(session)[1];
+
+        if (sessionKey === 'imageGallery') {
           return (
-            <StyledImageWrapper key={fluid}>
-              <Image fluid={fluid} />
-            </StyledImageWrapper>
+            <StyledGridWrapper>
+              {session.imageGallery.map(image => {
+                return (
+                  <StyledImageWrapper>
+                    <Image fluid={image.fluid} />
+                  </StyledImageWrapper>
+                );
+              })}
+            </StyledGridWrapper>
           );
-        })} */}
-      </StyledGridWrapper>
+        }
+      })}
+
       <Footer />
     </StyledContainer>
   );
+};
+SessionLayout.propTypes = {
+  data: PropTypes.object.isRequired,
 };
 
 export default SessionLayout;

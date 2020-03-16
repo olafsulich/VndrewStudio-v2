@@ -43,6 +43,7 @@ const StyledFigcaption = styled.figcaption`
   top: 90%;
   left: 2%;
   color: #f2f2f2;
+  text-transform: uppercase;
 
   @media only screen and (min-width: 900px) {
     font-size: 3.7rem;
@@ -120,17 +121,13 @@ const IndexPage = ({ data }) => {
       <StyledContainer id="home">
         <Navigation />
         <StyledImageWrapper>
-          <Image fluid={data.file.childImageSharp.fluid} />
-          <StyledFigcaption>MROK</StyledFigcaption>
+          <Image fluid={data.datoCmsMain.image.fluid} />
+          <StyledFigcaption>{data.datoCmsMain.title}</StyledFigcaption>
         </StyledImageWrapper>
         <StyledTextWrapper>
           <StyledHeading>
-            <StyledHeading>Mrok jest w nas</StyledHeading>
-            <StyledText>
-              Największym zbrodniarzem we wszechświecie jest niestety człowiek
-              Wiem, bo jestem nim, nie cofnę czasu, by wyleczyć zbrodnię Jestem
-              swoim bogiem, ale także swoim katem
-            </StyledText>
+            <StyledHeading>{data.datoCmsMain.subtitle}</StyledHeading>
+            <StyledText>{data.datoCmsMain.description}</StyledText>
           </StyledHeading>
         </StyledTextWrapper>
       </StyledContainer>
@@ -142,10 +139,13 @@ const IndexPage = ({ data }) => {
 };
 export const query = graphql`
   {
-    file(name: { eq: "main" }) {
-      childImageSharp {
-        fluid(quality: 100) {
-          ...GatsbyImageSharpFluid_tracedSVG
+    datoCmsMain {
+      title
+      subtitle
+      description
+      image {
+        fluid {
+          ...GatsbyDatoCmsFluid_tracedSVG
         }
       }
     }

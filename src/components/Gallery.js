@@ -32,7 +32,7 @@ const StyledTextWrapper = styled.article`
   }
 `;
 
-const StyledImageWrapper = styled.figure`
+const StyledImageWrapper = styled.div`
   width: 100%;
   height: 100%;
   min-width: 100%;
@@ -52,7 +52,7 @@ const StyledImageWrapper = styled.figure`
   }
 `;
 
-const StyledFigcaption = styled.figcaption`
+const StyledTitle = styled.h2`
   font-size: 3rem;
   font-weight: 800;
   position: absolute;
@@ -94,12 +94,12 @@ const StyledContainer = styled.section`
   }
 
   // prettier-ignore
-  ${StyledWrapper}:nth-of-type(2) > ${StyledImageWrapper} > ${StyledFigcaption} {
+  ${StyledWrapper}:nth-of-type(2) > ${StyledImageWrapper} > ${StyledTitle} {
     right: auto;
     left: 5%;
   }
 
-  ${StyledWrapper}:nth-of-type(3) > ${StyledImageWrapper} > ${StyledFigcaption} {
+  ${StyledWrapper}:nth-of-type(3) > ${StyledImageWrapper} > ${StyledTitle} {
     top: calc(92% );
   }
 }
@@ -178,10 +178,13 @@ const query = graphql`
       nodes {
         id
         title
+        slug
         subtitle
         description
         featuredImage {
-          url
+          fluid {
+            ...GatsbyDatoCmsFluid_tracedSVG
+          }
         }
       }
     }
@@ -192,32 +195,27 @@ const Gallery = () => {
   const data = useStaticQuery(query);
   const sessionItems = [...data.allDatoCmsSession.nodes];
   console.log(sessionItems);
-
   return (
     <StyledContainer id="works">
       {sessionItems.map(
-        ({
-          id, title, subtitle, description, featuredImage,
-        }) => {
-          const titleLink = `sesje/${title.toLowerCase()}`;
-
+        ({ id, title, subtitle, description, featuredImage, slug }) => {
           return (
             <StyledWrapper key={id}>
               <StyledImageWrapper>
-                <img src={featuredImage.url} alt={title} />
-                <StyledFigcaption>{title}</StyledFigcaption>
+                <Image fluid={featuredImage.fluid} />
+                <StyledTitle>{title}</StyledTitle>
               </StyledImageWrapper>
               <StyledTextWrapper>
                 <StyledHeading>{subtitle}</StyledHeading>
                 <StyledText>{description}</StyledText>
-                <StyledLink to={titleLink}>
+                <StyledLink to={`sesje/${slug}`}>
                   Zobacz
                   <StyledSVGIcon />
                 </StyledLink>
               </StyledTextWrapper>
             </StyledWrapper>
           );
-        },
+        }
       )}
     </StyledContainer>
   );

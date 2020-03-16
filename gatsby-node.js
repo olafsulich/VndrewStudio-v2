@@ -10,22 +10,19 @@ exports.createPages = async ({ graphql, actions }) => {
         allDatoCmsSession {
           nodes {
             id
-            title
+            slug
           }
         }
       }
-    `,
+    `
   );
 
-  result.data.allDatoCmsSession.nodes.forEach(session => {
-    const slugifiedTitle = slugify(session.title, {
-      lower: true,
-    });
+  result.data.allDatoCmsSession.nodes.forEach(({ id, slug }) => {
     createPage({
-      path: `sesje/${slugifiedTitle}`,
+      path: `sesje/${slug}`,
       component: sessionTemplate,
       context: {
-        id: session.id,
+        id,
       },
     });
   });
