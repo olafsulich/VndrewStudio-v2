@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import gsap from 'gsap';
 import Text from './Text';
 import Heading from './Heading';
 import StyledArrow from './Arrow';
@@ -44,6 +45,29 @@ const StyledLink = styled.a`
 `;
 
 const SessionInfo = ({ sessionDetails }) => {
+  const titleRef = useRef(null);
+  const instaRef = useRef(null);
+  const textRef = useRef(null);
+
+  useEffect(() => {
+    const tl = gsap.timeline({ defaults: { ease: 'power2.easeInOut' } });
+
+    tl.fromTo(
+      titleRef.current,
+      { autoAlpha: 0, y: '-60' },
+      { autoAlpha: 1, duration: 1, y: '0' }
+    )
+      .fromTo(
+        textRef.current,
+        { autoAlpha: 0, y: '-60' },
+        { autoAlpha: 1, delay: -0.8, duration: 1, y: '0' }
+      )
+      .fromTo(
+        instaRef.current,
+        { autoAlpha: 0, y: '-60' },
+        { autoAlpha: 1, delay: -0.8, duration: 1, y: '0' }
+      );
+  }, []);
   return (
     <StyledWrapper>
       {sessionDetails.map(session => {
@@ -51,15 +75,24 @@ const SessionInfo = ({ sessionDetails }) => {
 
         switch (sessionKey) {
           case 'titleContent':
-            return <Heading session>{session[sessionKey]}</Heading>;
+            return (
+              <Heading session ref={titleRef}>
+                {session[sessionKey]}
+              </Heading>
+            );
           case 'descriptionContent':
-            return <Text session>{session[sessionKey]}</Text>;
+            return (
+              <Text session ref={textRef}>
+                {session[sessionKey]}
+              </Text>
+            );
           case 'instagramLink':
             return (
               <StyledLink
                 href={session[sessionKey]}
                 target="_blank"
                 rel="noreferrer noopener"
+                ref={instaRef}
               >
                 Instagram
                 <StyledArrow />
