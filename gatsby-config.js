@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   siteMetadata: {
     title: 'Vndrew Studio',
@@ -34,8 +36,15 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: 'gatsby-source-datocms',
+      options: {
+        apiToken: process.env.API_DATO_CMS,
+      },
+    },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
+
     // {
     //   resolve: 'gatsby-plugin-manifest',
     //   options: {

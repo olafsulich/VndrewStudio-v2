@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { graphql, useStaticQuery, Link } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import Image from 'gatsby-image';
 import Footer from '../components/Footer';
 import Navigation from '../components/organisms/Navigation';
@@ -163,23 +163,21 @@ const StyledImageWrapper = styled.figure`
   }
 `;
 
-const query = graphql`
-  {
-    allFile(filter: { absolutePath: { regex: "/sessions/" } }) {
-      nodes {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
-        }
+export const query = graphql`
+  query sessionPage($id: String!) {
+    datoCmsSession(id: { eq: $id }) {
+      id
+      title
+      subtitle
+      description
+      featuredImage {
+        url
       }
     }
   }
 `;
 
-const session = () => {
-  const data = useStaticQuery(query);
-  const photosURLs = [...data.allFile.nodes];
+const SessionLayout = () => {
   return (
     <StyledContainer>
       <Navigation />
@@ -196,18 +194,18 @@ const session = () => {
         </StyledLink>
       </StyledWrapper>
       <StyledGridWrapper>
-        {photosURLs.map(photo => {
+        {/* {photosURLs.map(photo => {
           const fluid = photo.childImageSharp.fluid;
           return (
             <StyledImageWrapper key={fluid}>
               <Image fluid={fluid} />
             </StyledImageWrapper>
           );
-        })}
+        })} */}
       </StyledGridWrapper>
       <Footer />
     </StyledContainer>
   );
 };
 
-export default session;
+export default SessionLayout;

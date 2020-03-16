@@ -174,12 +174,14 @@ const StyledSVGIcon = styled(Arrow)`
 
 const query = graphql`
   {
-    allFile(filter: { absolutePath: { regex: "/sessions/" } }) {
+    allDatoCmsSession {
       nodes {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
+        id
+        title
+        subtitle
+        description
+        featuredImage {
+          url
         }
       }
     }
@@ -188,32 +190,35 @@ const query = graphql`
 
 const Gallery = () => {
   const data = useStaticQuery(query);
-  const photosURLs = [...data.allFile.nodes];
+  const sessionItems = [...data.allDatoCmsSession.nodes];
+  console.log(sessionItems);
+
   return (
     <StyledContainer id="works">
-      {photosURLs.map(photo => {
-        const fluid = photo.childImageSharp.fluid;
-        return (
-          <StyledWrapper>
-            <StyledImageWrapper>
-              <Image fluid={fluid} />
-              <StyledFigcaption>Prisoner</StyledFigcaption>
-            </StyledImageWrapper>
-            <StyledTextWrapper>
-              <StyledHeading>Prisoner in self mind</StyledHeading>
-              <StyledText>
-                Największym zbrodniarzem we wszechświecie jest niestety człowiek
-                Wiem, bo jestem nim, nie cofnę czasu, by wyleczyć zbrodnię
-                Jestem swoim bogiem, ale także swoim katem
-              </StyledText>
-              <StyledLink>
-                Zobacz
-                <StyledSVGIcon />
-              </StyledLink>
-            </StyledTextWrapper>
-          </StyledWrapper>
-        );
-      })}
+      {sessionItems.map(
+        ({
+          id, title, subtitle, description, featuredImage,
+        }) => {
+          const titleLink = `sesje/${title.toLowerCase()}`;
+
+          return (
+            <StyledWrapper key={id}>
+              <StyledImageWrapper>
+                <img src={featuredImage.url} alt={title} />
+                <StyledFigcaption>{title}</StyledFigcaption>
+              </StyledImageWrapper>
+              <StyledTextWrapper>
+                <StyledHeading>{subtitle}</StyledHeading>
+                <StyledText>{description}</StyledText>
+                <StyledLink to={titleLink}>
+                  Zobacz
+                  <StyledSVGIcon />
+                </StyledLink>
+              </StyledTextWrapper>
+            </StyledWrapper>
+          );
+        },
+      )}
     </StyledContainer>
   );
 };
