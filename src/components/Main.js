@@ -147,9 +147,9 @@ const Main = ({
 
   return (
     <>
-      <StyledContainer id="home">
+      <StyledContainer>
         <Navigation />
-        <StyledImageWrapper ref={imageWrapperRef}>
+        <StyledImageWrapper ref={imageWrapperRef} id="home">
           <Image fluid={fluid} ref={imageRef} />
           <StyledImageReveal ref={imageReveal} />
           <StyledFigcaption ref={titleRef}>{title}</StyledFigcaption>

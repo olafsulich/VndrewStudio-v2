@@ -1,7 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
+import { Link as GatsbyLink } from 'gatsby';
+import { Link } from 'react-scroll';
 import Heading from './Heading';
 
 const StyledWrapper = styled.nav`
@@ -89,34 +90,42 @@ const Navigation = ({ session }) => {
       {session ? (
         <StyledWrapper session>
           <Heading logo as="h1">
-            <StyledLink href="#home">VS</StyledLink>
+            <GatsbyLink to="/">VS</GatsbyLink>
           </Heading>
           <StyledList>
             <StyledListItem>
-              <StyledLink href="#home">Strona główna</StyledLink>
+              <GatsbyLink to="#home">Strona główna</GatsbyLink>
             </StyledListItem>
             <StyledListItem>
-              <StyledLink href="#works">Prace</StyledLink>
+              <GatsbyLink to="#works">Prace</GatsbyLink>
             </StyledListItem>
             <StyledListItem>
-              <StyledLink href="#about">O mnie</StyledLink>
+              <GatsbyLink to="#about">O mnie</GatsbyLink>
             </StyledListItem>
           </StyledList>
         </StyledWrapper>
       ) : (
         <StyledWrapper>
           <Heading logo as="h1">
-            <StyledLink href="#home">VS</StyledLink>
+            <Link to="home" smooth duration={1000}>
+              VS
+            </Link>
           </Heading>
           <StyledList>
             <StyledListItem>
-              <StyledLink href="#home">Strona główna</StyledLink>
+              <Link to="home" smooth duration={1000}>
+                Strona główna
+              </Link>
             </StyledListItem>
             <StyledListItem>
-              <StyledLink href="#works">Prace</StyledLink>
+              <Link to="works" smooth duration={1000}>
+                Prace
+              </Link>
             </StyledListItem>
             <StyledListItem>
-              <StyledLink href="#about">O mnie</StyledLink>
+              <Link to="about" smooth duration={1250}>
+                O mnie
+              </Link>
             </StyledListItem>
           </StyledList>
         </StyledWrapper>

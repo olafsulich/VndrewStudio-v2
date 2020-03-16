@@ -21,10 +21,14 @@ const query = graphql`
   }
 `;
 
-const Gallery = id => {
+const Gallery = () => {
   const data = useStaticQuery(query);
   const sessionItems = [...data.allDatoCmsSession.nodes];
-  return <SessionsList id sessionItems={sessionItems} />;
+  return (
+    <div id="works">
+      <SessionsList sessionItems={sessionItems} />
+    </div>
+  );
 };
 
 export default Gallery;

@@ -76,13 +76,13 @@ const SessionInfo = ({ sessionDetails }) => {
         switch (sessionKey) {
           case 'titleContent':
             return (
-              <Heading session ref={titleRef}>
+              <Heading key={session.id} session ref={titleRef}>
                 {session[sessionKey]}
               </Heading>
             );
           case 'descriptionContent':
             return (
-              <Text session ref={textRef}>
+              <Text session ref={textRef} key={session.id}>
                 {session[sessionKey]}
               </Text>
             );
@@ -93,6 +93,7 @@ const SessionInfo = ({ sessionDetails }) => {
                 target="_blank"
                 rel="noreferrer noopener"
                 ref={instaRef}
+                key={session.id}
               >
                 Instagram
                 <StyledArrow />
@@ -106,7 +107,7 @@ const SessionInfo = ({ sessionDetails }) => {
   );
 };
 SessionInfo.propTypes = {
-  sessionDetails: PropTypes.object.isRequired,
+  sessionDetails: PropTypes.array.isRequired,
 };
 
 export default SessionInfo;

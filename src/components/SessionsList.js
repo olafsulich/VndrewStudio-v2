@@ -99,6 +99,60 @@ const StyledLink = styled(Link)`
 `;
 
 const SessionsList = ({ sessionItems }) => {
+  const titleRef = useRef(null);
+  const subTitleRef = useRef(null);
+  const textRef = useRef(null);
+
+  const intersection = useIntersection(subTitleRef, {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.9,
+  });
+
+  const fadeIn = () => {
+    gsap.to(titleRef.current, 1, {
+      autoAlpha: 1,
+      ease: 'power4.out',
+      stagger: {
+        amount: 0.3,
+      },
+    });
+    gsap.to(textRef.current, 1, {
+      autoAlpha: 1,
+      y: -60,
+      ease: 'power4.out',
+      stagger: {
+        amount: 0.3,
+      },
+    });
+
+    gsap.to(subTitleRef.current, 1, {
+      autoAlpha: 1,
+      y: -60,
+      ease: 'power4.out',
+      stagger: {
+        amount: 0.3,
+      },
+    });
+  };
+  const fadeOut = () => {
+    gsap.to(titleRef.current, 1, {
+      autoAlpha: 0,
+      ease: 'power4.out',
+    });
+    gsap.to(subTitleRef.current, 1, {
+      autoAlpha: 0,
+      y: 0,
+      ease: 'power4.out',
+    });
+    gsap.to(textRef.current, 1, {
+      autoAlpha: 0,
+      y: 0,
+      ease: 'power4.out',
+    });
+  };
+
+  intersection && intersection.intersectionRatio < 0.9 ? fadeOut() : fadeIn();
   return (
     <StyledContainer>
       {sessionItems.map(
@@ -110,65 +164,8 @@ const SessionsList = ({ sessionItems }) => {
           featuredImage: { fluid },
           slug,
         }) => {
-          const titleRef = useRef(null);
-          const subTitleRef = useRef(null);
-          const textRef = useRef(null);
-
-          const intersection = useIntersection(subTitleRef, {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.9,
-          });
-
-          const fadeIn = () => {
-            gsap.to(titleRef.current, 1, {
-              autoAlpha: 1,
-              ease: 'power4.out',
-              stagger: {
-                amount: 0.3,
-              },
-            });
-            gsap.to(textRef.current, 1, {
-              autoAlpha: 1,
-              y: -60,
-              ease: 'power4.out',
-              stagger: {
-                amount: 0.3,
-              },
-            });
-
-            gsap.to(subTitleRef.current, 1, {
-              autoAlpha: 1,
-              y: -60,
-              ease: 'power4.out',
-              stagger: {
-                amount: 0.3,
-              },
-            });
-          };
-          const fadeOut = () => {
-            gsap.to(titleRef.current, 1, {
-              autoAlpha: 0,
-              ease: 'power4.out',
-            });
-            gsap.to(subTitleRef.current, 1, {
-              autoAlpha: 0,
-              y: 0,
-              ease: 'power4.out',
-            });
-            gsap.to(textRef.current, 1, {
-              autoAlpha: 0,
-              y: 0,
-              ease: 'power4.out',
-            });
-          };
-
-          intersection && intersection.intersectionRatio < 0.9
-            ? fadeOut()
-            : fadeIn();
-
           return (
-            <StyledWrapper key={id} id="works">
+            <StyledWrapper key={slug}>
               <ParallaxProvider>
                 <StyledImageWrapper>
                   <Parallax y={[-40, 40]} tagOuter="div">
@@ -201,7 +198,7 @@ const SessionsList = ({ sessionItems }) => {
 };
 
 SessionsList.propTypes = {
-  sessionItems: PropTypes.object.isRequired,
+  sessionItems: PropTypes.array.isRequired,
 };
 
 export default SessionsList;

@@ -47,7 +47,7 @@ const GridImagesList = ({ sessionDetails }) => {
   );
 };
 GridImagesList.propTypes = {
-  sessionDetails: PropTypes.object.isRequired,
+  sessionDetails: PropTypes.array.isRequired,
 };
 
 export default GridImagesList;
