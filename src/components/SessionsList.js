@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { Parallax, ParallaxProvider } from 'react-scroll-parallax';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import Image from 'gatsby-image';
@@ -42,6 +43,7 @@ const StyledImageWrapper = styled.div`
   min-height: 470px;
   position: relative;
   order: 2;
+  overflow: hidden;
 
   @media only screen and (min-width: 700px) {
     min-width: auto;
@@ -108,10 +110,15 @@ const SessionsList = ({ sessionItems }) => {
         }) => {
           return (
             <StyledWrapper key={id}>
-              <StyledImageWrapper>
-                <Image fluid={fluid} />
-                <Heading galleryImage>{title}</Heading>
-              </StyledImageWrapper>
+              <ParallaxProvider>
+                <StyledImageWrapper>
+                  <Parallax y={[-40, 40]} tagOuter="div">
+                    <Image fluid={fluid} />
+                  </Parallax>
+                  <Heading galleryImage>{title}</Heading>
+                </StyledImageWrapper>
+              </ParallaxProvider>
+
               <StyledTextWrapper>
                 <Heading gallery as="h3">
                   {subtitle}
