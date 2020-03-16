@@ -66,6 +66,7 @@ const StyledListItem = styled.li`
   font-size: 1rem;
   margin-left: 1.5rem;
   font-weight: 600;
+  cursor: pointer;
 
   @media only screen and (min-width: 700px) {
     font-size: 1.2rem;
