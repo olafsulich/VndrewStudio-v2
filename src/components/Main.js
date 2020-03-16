@@ -51,7 +51,7 @@ const StyledFigcaption = styled.figcaption`
   font-size: 3rem;
   font-weight: 800;
   position: absolute;
-  top: 90%;
+  top: 85%;
   left: 2%;
   color: #f2f2f2;
   text-transform: uppercase;

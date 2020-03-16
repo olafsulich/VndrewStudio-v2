@@ -113,13 +113,10 @@ const SessionsList = ({ sessionItems }) => {
     gsap.to(titleRef.current, 1, {
       autoAlpha: 1,
       ease: 'power4.out',
-      stagger: {
-        amount: 0.3,
-      },
     });
     gsap.to(textRef.current, 1, {
       autoAlpha: 1,
-      y: -60,
+      y: -50,
       ease: 'power4.out',
       stagger: {
         amount: 0.3,
@@ -128,7 +125,7 @@ const SessionsList = ({ sessionItems }) => {
 
     gsap.to(subTitleRef.current, 1, {
       autoAlpha: 1,
-      y: -60,
+      y: -50,
       ease: 'power4.out',
       stagger: {
         amount: 0.3,
