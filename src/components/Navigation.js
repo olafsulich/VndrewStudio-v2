@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
+import Heading from './Heading';
 
 const StyledWrapper = styled.nav`
   width: 100%;
@@ -52,24 +53,12 @@ const StyledListItem = styled.li`
   }
 `;
 
-const StyledLogo = styled.h1`
-  font-size: 4rem;
-  font-weight: 800;
-
-  @media only screen and (min-width: 700px) {
-    font-size: 6rem;
-  }
-  @media only screen and (min-width: 1400px) {
-    font-size: 7rem;
-  }
-`;
-
 const Navigation = () => {
   return (
     <StyledWrapper>
-      <StyledLogo>
+      <Heading logo as="h1">
         <Link to="/">VS</Link>
-      </StyledLogo>
+      </Heading>
       <StyledList>
         <StyledListItem>Strona główna</StyledListItem>
         <StyledListItem>Prace</StyledListItem>

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import Arrow from '../assets/arrow.svg';
 import Text from './Text';
+import Heading from './Heading';
 
 const StyledContainer = styled.section`
   width: 100%;
@@ -34,32 +35,6 @@ const StyledContainer = styled.section`
 
   @media only screen and (min-width: 1600px) {
     padding: 24rem 30rem;
-  }
-`;
-
-const StyledHeading = styled.h4`
-  font-size: 3rem;
-  color: #292929;
-  margin-bottom: 1rem;
-  font-weight: 700;
-
-  @media only screen and (min-width: 700px) {
-    font-size: 5rem;
-  }
-
-  @media only screen and (min-width: 900px) {
-    font-size: 6.5rem;
-    margin-bottom: 3rem;
-  }
-
-  @media only screen and (min-width: 1300px) {
-    font-size: 7rem;
-    margin-bottom: 4rem;
-  }
-
-  @media only screen and (min-width: 1600px) {
-    font-size: 8.5rem;
-    margin-bottom: 5rem;
   }
 `;
 
@@ -139,7 +114,9 @@ const About = () => {
   const { description, instagram, youtube, facebook } = data.datoCmsAbout;
   return (
     <StyledContainer>
-      <StyledHeading>O MNIE</StyledHeading>
+      <Heading about as="h4">
+        O MNIE
+      </Heading>
       <StyledAboutWrapper>
         <Text about>{description}</Text>
         <StyledSocialsWrapper>

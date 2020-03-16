@@ -4,6 +4,7 @@ import { graphql, useStaticQuery, Link } from 'gatsby';
 import Logo from '../assets/footer-logo.svg';
 import Heart from '../assets/heart.svg';
 import Text from './Text';
+import Heading from './Heading';
 
 const StyledContainer = styled.footer`
   width: 100%;
@@ -112,20 +113,6 @@ const StyledLogo = styled(Logo)`
   }
 `;
 
-const StyledHeading = styled.h4`
-  font-size: 1.8rem;
-  color: #fff5f5;
-  margin-bottom: 2rem;
-  font-weight: 400;
-  @media only screen and (min-width: 1100px) {
-    font-size: 2.2rem;
-  }
-  @media only screen and (min-width: 1600px) {
-    margin-bottom: 2.4rem;
-    font-size: 2.6rem;
-  }
-`;
-
 const StyledLink = styled.a`
   font-size: 1.6rem;
   color: #888888;
@@ -170,7 +157,9 @@ const Footer = () => {
       </StyledWrapper>
       <StyledColumnsWrapper>
         <StyledColumn>
-          <StyledHeading>Social media</StyledHeading>
+          <Heading footer as="h4">
+            Social media
+          </Heading>
           <StyledLink href={facebook} target="_blank" rel="noreferrer noopener">
             Facebook
           </StyledLink>
@@ -186,7 +175,9 @@ const Footer = () => {
           </StyledLink>
         </StyledColumn>
         <StyledColumn>
-          <StyledHeading>Kontakt</StyledHeading>
+          <Heading footer as="h4">
+            Kontakt
+          </Heading>
           <Text footer>{instagramName}</Text>
           <Text footer>{email}</Text>
         </StyledColumn>

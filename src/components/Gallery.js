@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components';
 import Image from 'gatsby-image';
 import Arrow from '../assets/arrow.svg';
 import Text from './Text';
+import Heading from './Heading';
 
 const StyledWrapper = styled.div`
   width: 100%;
@@ -107,23 +108,6 @@ const StyledContainer = styled.section`
 
 `;
 
-const StyledHeading = styled.h3`
-  font-size: 1.6rem;
-  color: #292929;
-  margin-bottom: 1rem;
-  font-weight: 600;
-
-  @media only screen and (min-width: 900px) {
-    font-size: 1.8rem;
-    margin-bottom: 1.2rem;
-  }
-
-  @media only screen and (min-width: 1100px) {
-    font-size: 2.4rem;
-    margin-bottom: 1.4rem;
-  }
-`;
-
 const StyledLink = styled(Link)`
   font-size: 1.6rem;
   color: #292929;
@@ -191,7 +175,9 @@ const Gallery = () => {
                 <StyledTitle>{title}</StyledTitle>
               </StyledImageWrapper>
               <StyledTextWrapper>
-                <StyledHeading>{subtitle}</StyledHeading>
+                <Heading gallery as="h3">
+                  {subtitle}
+                </Heading>
                 <Text>{description}</Text>
                 <StyledLink to={`sesje/${slug}`}>
                   Zobacz

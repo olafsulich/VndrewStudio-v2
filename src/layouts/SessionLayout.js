@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import Navigation from '../components/Navigation';
 import Arrow from '../assets/arrow.svg';
 import Text from '../components/Text';
+import Heading from '../components/Heading';
 
 const StyledContainer = styled.section`
   width: 100%;
@@ -33,32 +34,6 @@ const StyledWrapper = styled.article`
 
   @media only screen and (min-width: 1200px) {
     padding: 8rem 7rem;
-  }
-`;
-
-const StyledHeading = styled.h2`
-  font-size: 4.5rem;
-  color: #292929;
-  margin-bottom: 1rem;
-  font-weight: 700;
-
-  @media only screen and (min-width: 700px) {
-    font-size: 6rem;
-  }
-
-  @media only screen and (min-width: 900px) {
-    font-size: 7rem;
-    margin-bottom: 3rem;
-  }
-
-  @media only screen and (min-width: 1300px) {
-    font-size: 8rem;
-    margin-bottom: 4rem;
-  }
-
-  @media only screen and (min-width: 1600px) {
-    font-size: 9.5rem;
-    margin-bottom: 5rem;
   }
 `;
 
@@ -171,7 +146,7 @@ const SessionLayout = ({ data }) => {
 
           switch (sessionKey) {
             case 'titleContent':
-              return <StyledHeading>{session[sessionKey]}</StyledHeading>;
+              return <Heading session>{session[sessionKey]}</Heading>;
             case 'descriptionContent':
               return <Text session>{session[sessionKey]}</Text>;
             case 'instagramLink':

@@ -8,6 +8,8 @@ import Gallery from '../components/Gallery';
 import About from '../components/About';
 import Footer from '../components/Footer';
 import Text from '../components/Text';
+import Heading from '../components/Heading';
+
 const StyledContainer = styled.section`
   width: 100%;
   height: 100%;
@@ -83,20 +85,6 @@ const StyledTextWrapper = styled.article`
   }
 `;
 
-const StyledHeading = styled.h2`
-  font-size: 1.6rem;
-  color: #292929;
-  margin-bottom: 1rem;
-  font-weight: 600;
-
-  @media only screen and (min-width: 900px) {
-    font-size: 1.8rem;
-  }
-  @media only screen and (min-width: 1100px) {
-    font-size: 2.2rem;
-  }
-`;
-
 const IndexPage = ({
   data: {
     datoCmsMain: {
@@ -116,10 +104,8 @@ const IndexPage = ({
           <StyledFigcaption>{title}</StyledFigcaption>
         </StyledImageWrapper>
         <StyledTextWrapper>
-          <StyledHeading>
-            <StyledHeading>{subtitle}</StyledHeading>
-            <Text main>{description}</Text>
-          </StyledHeading>
+          <Heading main>{subtitle}</Heading>
+          <Text main>{description}</Text>
         </StyledTextWrapper>
       </StyledContainer>
       <Gallery />
