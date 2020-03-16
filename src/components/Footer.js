@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { Link } from 'gatsby';
+import { graphql, useStaticQuery, Link } from 'gatsby';
 import Logo from '../assets/footer-logo.svg';
 import Heart from '../assets/heart.svg';
 
@@ -147,7 +147,7 @@ const StyledText = styled.p`
   }
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled.a`
   font-size: 1.6rem;
   color: #888888;
   margin-bottom: 2rem;
@@ -162,7 +162,27 @@ const StyledHeart = styled(Heart)`
   margin: 0 1rem;
 `;
 
+const query = graphql`
+  {
+    datoCmsFooter {
+      facebook
+      instagram
+      youtube
+      email
+      instagramName
+    }
+  }
+`;
 const Footer = () => {
+  const data = useStaticQuery(query);
+  console.log(data);
+  const {
+    instagramName,
+    instagram,
+    youtube,
+    facebook,
+    email,
+  } = data.datoCmsFooter;
   return (
     <StyledContainer id="about">
       <StyledWrapper>
@@ -171,14 +191,24 @@ const Footer = () => {
       <StyledColumnsWrapper>
         <StyledColumn>
           <StyledHeading>Social media</StyledHeading>
-          <StyledLink>Facebook</StyledLink>
-          <StyledLink>Instagram</StyledLink>
-          <StyledLink>Youtube</StyledLink>
+          <StyledLink href={facebook} target="_blank" rel="noreferrer noopener">
+            Facebook
+          </StyledLink>
+          <StyledLink
+            href={instagram}
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Instagram
+          </StyledLink>
+          <StyledLink href={youtube} target="_blank" rel="noreferrer noopener">
+            Youtube
+          </StyledLink>
         </StyledColumn>
         <StyledColumn>
           <StyledHeading>Kontakt</StyledHeading>
-          <StyledText>@vndrew_photos</StyledText>
-          <StyledText>vndrewstudio@gmail.com</StyledText>
+          <StyledText>{instagramName}</StyledText>
+          <StyledText>{email}</StyledText>
         </StyledColumn>
       </StyledColumnsWrapper>
       <StyledText copyrights>
