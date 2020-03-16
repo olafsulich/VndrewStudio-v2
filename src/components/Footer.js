@@ -151,7 +151,7 @@ const Footer = () => {
     email,
   } = data.datoCmsFooter;
   return (
-    <StyledContainer id="about">
+    <StyledContainer id="footer">
       <StyledWrapper>
         <StyledLogo />
       </StyledWrapper>

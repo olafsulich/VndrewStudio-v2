@@ -113,7 +113,7 @@ const About = () => {
   const data = useStaticQuery(query);
   const { description, instagram, youtube, facebook } = data.datoCmsAbout;
   return (
-    <StyledContainer>
+    <StyledContainer id="about">
       <Heading about as="h4">
         O MNIE
       </Heading>

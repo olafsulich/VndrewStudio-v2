@@ -79,29 +79,45 @@ const StyledListItem = styled.li`
   }
 `;
 
+const StyledLink = styled.a`
+  scroll-behavior: smooth;
+`;
+
 const Navigation = ({ session }) => {
   return (
     <>
       {session ? (
         <StyledWrapper session>
           <Heading logo as="h1">
-            <Link to="/">VS</Link>
+            <StyledLink href="#home">VS</StyledLink>
           </Heading>
           <StyledList>
-            <StyledListItem>Strona główna</StyledListItem>
-            <StyledListItem>Prace</StyledListItem>
-            <StyledListItem>O mnie</StyledListItem>
+            <StyledListItem>
+              <StyledLink href="#home">Strona główna</StyledLink>
+            </StyledListItem>
+            <StyledListItem>
+              <StyledLink href="#works">Prace</StyledLink>
+            </StyledListItem>
+            <StyledListItem>
+              <StyledLink href="#about">O mnie</StyledLink>
+            </StyledListItem>
           </StyledList>
         </StyledWrapper>
       ) : (
         <StyledWrapper>
           <Heading logo as="h1">
-            <Link to="/">VS</Link>
+            <StyledLink href="#home">VS</StyledLink>
           </Heading>
           <StyledList>
-            <StyledListItem>Strona główna</StyledListItem>
-            <StyledListItem>Prace</StyledListItem>
-            <StyledListItem>O mnie</StyledListItem>
+            <StyledListItem>
+              <StyledLink href="#home">Strona główna</StyledLink>
+            </StyledListItem>
+            <StyledListItem>
+              <StyledLink href="#works">Prace</StyledLink>
+            </StyledListItem>
+            <StyledListItem>
+              <StyledLink href="#about">O mnie</StyledLink>
+            </StyledListItem>
           </StyledList>
         </StyledWrapper>
       )}

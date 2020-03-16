@@ -140,7 +140,7 @@ const Main = ({
         { scale: 1.6 },
         { scale: 0, duration: 1.4, delay: -1.4 }
       )
-      .to(titleRef.current, { autoAlpha: 1, delay: -1.6, duration: 3 })
+      .to(titleRef.current, { autoAlpha: 1, delay: -1.2, duration: 3 })
       .to(subTitleRef.current, { autoAlpha: 1, delay: -2, duration: 1.4 })
       .to(textRef.current, { autoAlpha: 1, delay: -2, duration: 1.4 });
   }, []);

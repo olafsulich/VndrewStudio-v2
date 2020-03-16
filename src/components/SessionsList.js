@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled, { css } from 'styled-components';
-import { Parallax, ParallaxProvider } from 'react-scroll-parallax';
 import PropTypes from 'prop-types';
+import { Parallax, ParallaxProvider } from 'react-scroll-parallax';
+import gsap from 'gsap';
+import { useIntersection } from 'react-use';
 import { Link } from 'gatsby';
 import Image from 'gatsby-image';
 import Text from './Text';
@@ -108,22 +110,83 @@ const SessionsList = ({ sessionItems }) => {
           featuredImage: { fluid },
           slug,
         }) => {
+          const titleRef = useRef(null);
+          const subTitleRef = useRef(null);
+          const textRef = useRef(null);
+
+          const intersection = useIntersection(subTitleRef, {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.9,
+          });
+
+          const fadeIn = () => {
+            gsap.to(titleRef.current, 1, {
+              autoAlpha: 1,
+              ease: 'power4.out',
+              stagger: {
+                amount: 0.3,
+              },
+            });
+            gsap.to(textRef.current, 1, {
+              autoAlpha: 1,
+              y: -60,
+              ease: 'power4.out',
+              stagger: {
+                amount: 0.3,
+              },
+            });
+
+            gsap.to(subTitleRef.current, 1, {
+              autoAlpha: 1,
+              y: -60,
+              ease: 'power4.out',
+              stagger: {
+                amount: 0.3,
+              },
+            });
+          };
+          const fadeOut = () => {
+            gsap.to(titleRef.current, 1, {
+              autoAlpha: 0,
+              ease: 'power4.out',
+            });
+            gsap.to(subTitleRef.current, 1, {
+              autoAlpha: 0,
+              y: 0,
+              ease: 'power4.out',
+            });
+            gsap.to(textRef.current, 1, {
+              autoAlpha: 0,
+              y: 0,
+              ease: 'power4.out',
+            });
+          };
+
+          intersection && intersection.intersectionRatio < 0.9
+            ? fadeOut()
+            : fadeIn();
+
           return (
-            <StyledWrapper key={id}>
+            <StyledWrapper key={id} id="works">
               <ParallaxProvider>
                 <StyledImageWrapper>
                   <Parallax y={[-40, 40]} tagOuter="div">
                     <Image fluid={fluid} />
                   </Parallax>
-                  <Heading galleryImage>{title}</Heading>
+                  <Heading galleryImage ref={titleRef}>
+                    {title}
+                  </Heading>
                 </StyledImageWrapper>
               </ParallaxProvider>
 
               <StyledTextWrapper>
-                <Heading gallery as="h3">
+                <Heading gallery as="h3" ref={subTitleRef}>
                   {subtitle}
                 </Heading>
-                <Text gallery>{description}</Text>
+                <Text gallery ref={textRef}>
+                  {description}
+                </Text>
                 <StyledLink to={`sesje/${slug}`}>
                   Zobacz
                   <StyledArrow gallery />
