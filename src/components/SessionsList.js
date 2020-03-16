@@ -55,28 +55,6 @@ const StyledImageWrapper = styled.div`
   }
 `;
 
-const StyledTitle = styled.h2`
-  font-size: 3rem;
-  font-weight: 800;
-  position: absolute;
-  top: 92%;
-  right: 5%;
-  color: #f2f2f2;
-  text-transform: uppercase;
-
-  @media only screen and (min-width: 900px) {
-    font-size: 3.7rem;
-  }
-
-  @media only screen and (min-width: 1100px) {
-    font-size: 5rem;
-  }
-
-  @media only screen and (min-width: 1600px) {
-    font-size: 6.5rem;
-  }
-`;
-
 const StyledContainer = styled.section`
   width: 100%;
   height:100%;
@@ -93,11 +71,11 @@ const StyledContainer = styled.section`
     order: 1;
   }
   // prettier-ignore
-  ${StyledWrapper}:nth-of-type(2) > ${StyledImageWrapper} > ${StyledTitle} {
+  ${StyledWrapper}:nth-of-type(2) > ${StyledImageWrapper} > ${Heading} {
     right: auto;
     left: 5%;
   }
-  ${StyledWrapper}:nth-of-type(3) > ${StyledImageWrapper} > ${StyledTitle} {
+  ${StyledWrapper}:nth-of-type(3) > ${StyledImageWrapper} > ${Heading} {
     top: calc(92% );
   }
 }
@@ -132,7 +110,7 @@ const SessionsList = ({ sessionItems }) => {
             <StyledWrapper key={id}>
               <StyledImageWrapper>
                 <Image fluid={fluid} />
-                <StyledTitle>{title}</StyledTitle>
+                <Heading galleryImage>{title}</Heading>
               </StyledImageWrapper>
               <StyledTextWrapper>
                 <Heading gallery as="h3">

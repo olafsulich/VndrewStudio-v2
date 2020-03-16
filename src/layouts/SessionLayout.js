@@ -48,7 +48,7 @@ const SessionLayout = ({ data }) => {
 
   return (
     <StyledContainer>
-      <Navigation />
+      <Navigation session />
       <SessionInfo sessionDetails={sessionDetails} />
       <GridImagesList sessionDetails={sessionDetails} />
       <Footer />

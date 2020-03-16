@@ -87,7 +87,30 @@ const Heading = styled.h2`
           font-size: 2.4rem;
           margin-bottom: 1.4rem;
         }
-      `} 
+      `}
+      ${({ galleryImage }) =>
+    galleryImage &&
+        css`
+          font-size: 3rem;
+          font-weight: 800;
+          position: absolute;
+          top: 92%;
+          right: 5%;
+          color: #f2f2f2;
+          text-transform: uppercase;
+
+          @media only screen and (min-width: 900px) {
+            font-size: 3.7rem;
+          }
+
+          @media only screen and (min-width: 1100px) {
+            font-size: 5rem;
+          }
+
+          @media only screen and (min-width: 1600px) {
+            font-size: 6.5rem;
+          }
+        `}  
     ${({ session }) =>
     session &&
       css`
