@@ -20,6 +20,7 @@
     "gatsby-source-datocms": "^2.1.28",
     "gatsby-source-filesystem": "^2.1.46",
     "gatsby-transformer-sharp": "^2.3.13",
+    "gsap": "^3.2.4",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.8",
     "prop-types": "^15.7.2",

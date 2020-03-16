@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import gsap from 'gsap';
 import Image from 'gatsby-image';
 import Navigation from './Navigation';
 import Text from './Text';
@@ -20,6 +21,8 @@ const StyledImageWrapper = styled.figure`
   width: 100%;
   height: 90%;
   position: relative;
+  overflow: hidden;
+  visibility: hidden;
 
   @media only screen and (min-width: 700px) {
     width: 90%;
@@ -32,6 +35,16 @@ const StyledImageWrapper = styled.figure`
     width: 100% !important;
     height: auto !important;
   }
+`;
+
+const StyledImageReveal = styled.div`
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  top: 0;
+  right: 0;
 `;
 
 const StyledFigcaption = styled.figcaption`
@@ -91,17 +104,63 @@ const Main = ({
     },
   },
 }) => {
+  const imageReveal = useRef(null);
+  const imageRef = useRef(null);
+  const imageWrapperRef = useRef(null);
+  const titleRef = useRef(null);
+  const subTitleRef = useRef(null);
+  const textRef = useRef(null);
+
+  useEffect(() => {
+    const tl = gsap.timeline({ defaults: { ease: 'power2.easeInOut' } });
+    gsap.set([titleRef.current, subTitleRef.current, textRef.current], {
+      autoAlpha: 0,
+    });
+    tl.to(imageWrapperRef.current, {
+      duration: 0,
+      css: { visibility: 'visible' },
+    })
+      .fromTo(
+        imageReveal.current,
+        {
+          width: '100%',
+          skewX: 20,
+          scale: 1.5,
+        },
+        {
+          width: '0',
+          skewX: 0,
+          duration: 2,
+          transformOrigin: '0% 100%',
+          xPercent: 100,
+        }
+      )
+      .fromTo(
+        imageRef.current,
+        { scale: 1.6 },
+        { scale: 0, duration: 1.4, delay: -1.4 }
+      )
+      .to(titleRef.current, { autoAlpha: 1, delay: -1.6, duration: 3 })
+      .to(subTitleRef.current, { autoAlpha: 1, delay: -2, duration: 1.4 })
+      .to(textRef.current, { autoAlpha: 1, delay: -2, duration: 1.4 });
+  }, []);
+
   return (
     <>
       <StyledContainer id="home">
         <Navigation />
-        <StyledImageWrapper>
-          <Image fluid={fluid} />
-          <StyledFigcaption>{title}</StyledFigcaption>
+        <StyledImageWrapper ref={imageWrapperRef}>
+          <Image fluid={fluid} ref={imageRef} />
+          <StyledImageReveal ref={imageReveal} />
+          <StyledFigcaption ref={titleRef}>{title}</StyledFigcaption>
         </StyledImageWrapper>
         <StyledTextWrapper>
-          <Heading main>{subtitle}</Heading>
-          <Text main>{description}</Text>
+          <Heading main ref={subTitleRef}>
+            {subtitle}
+          </Heading>
+          <Text main ref={textRef}>
+            {description}
+          </Text>
         </StyledTextWrapper>
       </StyledContainer>
     </>

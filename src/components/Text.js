@@ -2,9 +2,8 @@ import styled, { css } from 'styled-components';
 
 const Text = styled.p`
     font-size: 1.2rem;
-    color: #292929;
+    color: #B8B8B8;
     font-weight: 400;
-    opacity: 0.5;
 
   ${({ main }) =>
     main &&
