@@ -3,9 +3,9 @@ import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import Image from 'gatsby-image';
-import Arrow from '../assets/arrow.svg';
 import Text from './Text';
 import Heading from './Heading';
+import StyledArrow from './Arrow';
 
 const StyledWrapper = styled.div`
   width: 100%;
@@ -116,20 +116,6 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const StyledSVGIcon = styled(Arrow)`
-  position: absolute;
-  width: 15px;
-  height: 11.5px;
-  top: 50%;
-  right: -65%;
-  transform: translate(-50%, -50%);
-
-  @media only screen and (min-width: 1600px) {
-    width: 20px;
-    height: 14px;
-  }
-`;
-
 const SessionsList = ({ sessionItems }) => {
   return (
     <StyledContainer>
@@ -152,10 +138,10 @@ const SessionsList = ({ sessionItems }) => {
                 <Heading gallery as="h3">
                   {subtitle}
                 </Heading>
-                <Text>{description}</Text>
+                <Text gallery>{description}</Text>
                 <StyledLink to={`sesje/${slug}`}>
                   Zobacz
-                  <StyledSVGIcon />
+                  <StyledArrow gallery />
                 </StyledLink>
               </StyledTextWrapper>
             </StyledWrapper>

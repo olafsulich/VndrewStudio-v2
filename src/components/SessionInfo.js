@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import Arrow from '../assets/arrow.svg';
 import Text from './Text';
 import Heading from './Heading';
+import StyledArrow from './Arrow';
 
 const StyledWrapper = styled.article`
   width: 100%;
@@ -43,20 +43,6 @@ const StyledLink = styled.a`
   }
 `;
 
-const StyledSVGIcon = styled(Arrow)`
-  position: absolute;
-  width: 15px;
-  height: 11.5px;
-  top: 50%;
-  right: -45%;
-  transform: translate(-50%, -50%);
-
-  @media only screen and (min-width: 1600px) {
-    width: 20px;
-    height: 14px;
-  }
-`;
-
 const SessionInfo = ({ sessionDetails }) => {
   return (
     <StyledWrapper>
@@ -76,7 +62,7 @@ const SessionInfo = ({ sessionDetails }) => {
                 rel="noreferrer noopener"
               >
                 Instagram
-                <StyledSVGIcon />
+                <StyledArrow />
               </StyledLink>
             );
           default:
