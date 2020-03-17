@@ -7,6 +7,7 @@ const Heading = styled.h2`
  ${({ logo }) =>
     logo &&
    css`
+     cursor: pointer;
      font-size: 4rem;
      font-weight: 800;
 

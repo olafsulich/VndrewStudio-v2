@@ -81,8 +81,23 @@ const StyledListItem = styled.li`
   }
 `;
 
-const StyledLink = styled.a`
-  scroll-behavior: smooth;
+const StyledLogo = styled(Logo)`
+  width: 12rem;
+  height: 3.5rem;
+
+  @media only screen and (min-width: 700px) {
+    width: 14rem;
+    height: 4.2rem;
+  }
+  @media only screen and (min-width: 1000px) {
+    width: 16rem;
+    height: 5rem;
+  }
+
+  @media only screen and (min-width: 1400px) {
+    width: 18rem;
+    height: 6rem;
+  }
 `;
 
 const Navigation = ({ session }) => {
@@ -92,7 +107,7 @@ const Navigation = ({ session }) => {
         <StyledWrapper session>
           <Heading logo as="h1">
             <GatsbyLink to="/">
-              <Logo />
+              <StyledLogo />
             </GatsbyLink>
           </Heading>
           <StyledList>
@@ -111,7 +126,7 @@ const Navigation = ({ session }) => {
         <StyledWrapper>
           <Heading logo as="h1">
             <Link to="home" smooth duration={1000}>
-              <Logo />
+              <StyledLogo />
             </Link>
           </Heading>
           <StyledList>
