@@ -1,19 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-import styled from 'styled-components';
 import Gallery from '../components/Gallery';
 import About from '../components/About';
 import Footer from '../components/Footer';
 import Main from '../components/Main';
-
-const StyledLink = styled.a`
-  scroll-behavior: smooth;
-`;
+import SEO from '../components/seo';
 
 const IndexPage = ({ data }) => {
   return (
     <>
+      <SEO title="Strona główna" />
       <Main data={data} />
       <Gallery />
       <About />

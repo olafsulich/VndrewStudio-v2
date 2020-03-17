@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Link as GatsbyLink } from 'gatsby';
 import { Link } from 'react-scroll';
 import Heading from './Heading';
-
+import Logo from '../assets/Logo.svg';
 const StyledWrapper = styled.nav`
   width: 100%;
   display: flex;
@@ -91,7 +91,9 @@ const Navigation = ({ session }) => {
       {session ? (
         <StyledWrapper session>
           <Heading logo as="h1">
-            <GatsbyLink to="/">VS</GatsbyLink>
+            <GatsbyLink to="/">
+              <Logo />
+            </GatsbyLink>
           </Heading>
           <StyledList>
             <StyledListItem>
@@ -109,7 +111,7 @@ const Navigation = ({ session }) => {
         <StyledWrapper>
           <Heading logo as="h1">
             <Link to="home" smooth duration={1000}>
-              VS
+              <Logo />
             </Link>
           </Heading>
           <StyledList>
