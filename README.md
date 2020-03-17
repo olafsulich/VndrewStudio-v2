@@ -12,6 +12,10 @@
 
 <h4 align="center">VndrewStudio is commercial project for my friend Andrew.</h4>
 
+<br>
+<br>
+<br>
+
 ## Project Overview 🎉
 
 It's my first commercial project realized for VndrewStudio.Both the website design (prepared in Figma) and all the code was made by me. I used the Gatsby static page generator, DatoCMS and the Netlify platform to use and easily update content by its owner. I also used CircleCI for CI/CD.
