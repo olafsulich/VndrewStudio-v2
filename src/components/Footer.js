@@ -142,7 +142,6 @@ const query = graphql`
 `;
 const Footer = () => {
   const data = useStaticQuery(query);
-  console.log(data);
   const {
     instagramName,
     instagram,

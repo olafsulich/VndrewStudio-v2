@@ -1,9 +1,9 @@
-import React, { useRef } from 'react';
-import styled, { css } from 'styled-components';
+import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import 'animate.css/animate.min.css';
+import ScrollAnimation from 'react-animate-on-scroll';
 import { Parallax, ParallaxProvider } from 'react-scroll-parallax';
-import gsap from 'gsap';
-import { useIntersection } from 'react-use';
 import { Link } from 'gatsby';
 import Image from 'gatsby-image';
 import Text from './Text';
@@ -17,6 +17,7 @@ const StyledWrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-top: 3rem;
 
   @media only screen and (min-width: 700px) {
     flex-direction: row;
@@ -88,111 +89,61 @@ const StyledContainer = styled.section`
 const StyledLink = styled(Link)`
   font-size: 1.6rem;
   color: #292929;
-  margin-top: 1rem;
   font-weight: 600;
   position: relative;
+  margin-top: 3rem;
 
   @media only screen and (min-width: 1600px) {
     font-size: 2rem;
-    margin-top: 2rem;
   }
 `;
 
-const SessionsList = ({ sessionItems }) => {
-  const titleRef = useRef(null);
-  const subTitleRef = useRef(null);
-  const textRef = useRef(null);
+const SessionsList = ({ sessionItems }) => (
+  <StyledContainer>
+    {sessionItems.map(
+      ({
+        id,
+        title,
+        subtitle,
+        description,
+        featuredImage: { fluid },
+        slug,
+      }) => {
+        return (
+          <StyledWrapper key={slug}>
+            <ParallaxProvider>
+              <StyledImageWrapper>
+                <Parallax y={[-40, 40]} tagOuter="div">
+                  <Image fluid={fluid} />
+                </Parallax>
+                <Heading galleryImage>{title}</Heading>
+              </StyledImageWrapper>
+            </ParallaxProvider>
 
-  const intersection = useIntersection(subTitleRef, {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.9,
-  });
-
-  const fadeIn = () => {
-    gsap.to(titleRef.current, 1, {
-      autoAlpha: 1,
-      ease: 'power4.out',
-    });
-    gsap.to(textRef.current, 1, {
-      autoAlpha: 1,
-      y: -50,
-      ease: 'power4.out',
-      stagger: {
-        amount: 0.3,
-      },
-    });
-
-    gsap.to(subTitleRef.current, 1, {
-      autoAlpha: 1,
-      y: -50,
-      ease: 'power4.out',
-      stagger: {
-        amount: 0.3,
-      },
-    });
-  };
-  const fadeOut = () => {
-    gsap.to(titleRef.current, 1, {
-      autoAlpha: 0,
-      ease: 'power4.out',
-    });
-    gsap.to(subTitleRef.current, 1, {
-      autoAlpha: 0,
-      y: 0,
-      ease: 'power4.out',
-    });
-    gsap.to(textRef.current, 1, {
-      autoAlpha: 0,
-      y: 0,
-      ease: 'power4.out',
-    });
-  };
-
-  intersection && intersection.intersectionRatio < 0.9 ? fadeOut() : fadeIn();
-  return (
-    <StyledContainer>
-      {sessionItems.map(
-        ({
-          id,
-          title,
-          subtitle,
-          description,
-          featuredImage: { fluid },
-          slug,
-        }) => {
-          return (
-            <StyledWrapper key={slug}>
-              <ParallaxProvider>
-                <StyledImageWrapper>
-                  <Parallax y={[-40, 40]} tagOuter="div">
-                    <Image fluid={fluid} />
-                  </Parallax>
-                  <Heading galleryImage ref={titleRef}>
-                    {title}
-                  </Heading>
-                </StyledImageWrapper>
-              </ParallaxProvider>
-
-              <StyledTextWrapper>
-                <Heading gallery as="h3" ref={subTitleRef}>
+            <StyledTextWrapper>
+              <ScrollAnimation animateIn="fadeIn">
+                <Heading gallery as="h3">
                   {subtitle}
                 </Heading>
-                <Text gallery ref={textRef}>
-                  {description}
-                </Text>
-                <StyledLink to={`sesje/${slug}`}>
+              </ScrollAnimation>
+
+              <ScrollAnimation animateIn="fadeIn">
+                <Text gallery>{description}</Text>
+              </ScrollAnimation>
+
+              <StyledLink to={`sesje/${slug}`}>
+                <ScrollAnimation animateIn="fadeIn">
                   Zobacz
                   <StyledArrow gallery />
-                </StyledLink>
-              </StyledTextWrapper>
-            </StyledWrapper>
-          );
-        }
-      )}
-    </StyledContainer>
-  );
-};
+                </ScrollAnimation>
+              </StyledLink>
+            </StyledTextWrapper>
+          </StyledWrapper>
+        );
+      }
+    )}
+  </StyledContainer>
+);
 
 SessionsList.propTypes = {
   sessionItems: PropTypes.array.isRequired,
