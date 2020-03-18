@@ -42,7 +42,7 @@ It's my first commercial project realized for VndrewStudio.Both the website desi
 
 - Husky & Lint-staged
 
-- React-use
+- React-animate-on-scroll
 
 - React scroll, React scroll-parallax
 
