@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import 'animate.css/animate.min.css';
-import ScrollAnimation from 'react-animate-on-scroll';
 import { Parallax, ParallaxProvider } from 'react-scroll-parallax';
-import { Link } from 'gatsby';
+import ScrollAnimation from 'react-animate-on-scroll';
 import Image from 'gatsby-image';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import Text from './Text';
 import Heading from './Heading';
 import StyledArrow from './Arrow';
@@ -72,7 +72,7 @@ const StyledContainer = styled.section`
   justify-items: center;
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(AniLink)`
   font-size: 1.6rem;
   color: #292929;
   font-weight: 600;
@@ -103,19 +103,29 @@ const SessionsList = ({ sessionItems }) => (
                 </Heading>
               </StyledImageWrapper>
             </ParallaxProvider>
-
             <StyledTextWrapper order={index}>
               <ScrollAnimation animateIn="fadeIn">
                 <Heading gallery as="h3">
                   {subtitle}
                 </Heading>
               </ScrollAnimation>
-
               <ScrollAnimation animateIn="fadeIn">
                 <Text gallery>{description}</Text>
               </ScrollAnimation>
-
-              <StyledLink to={`sesje/${slug}`}>
+              <StyledLink
+                direction="right"
+                duration={1.5}
+                cover
+                to={`sesje/${slug}`}
+                bg="
+                  center / cover   /* position / size */
+                  no-repeat        /* repeat */
+                  fixed            /* attachment */
+                  padding-box      /* origin */
+                  content-box      /* clip */
+                  white            /* color */
+                "
+              >
                 <ScrollAnimation animateIn="fadeIn">
                   Zobacz
                   <StyledArrow gallery />

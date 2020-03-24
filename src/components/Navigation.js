@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { Link as GatsbyLink } from 'gatsby';
 import { Link } from 'react-scroll';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import Heading from './Heading';
 import Logo from '../assets/Logo.svg';
 const StyledWrapper = styled.nav`
@@ -106,19 +107,77 @@ const Navigation = ({ session }) => {
       {session ? (
         <StyledWrapper session>
           <Heading logo as="h1">
-            <GatsbyLink to="/">
+            <AniLink
+              direction="right"
+              duration={1.5}
+              cover
+              to="/"
+              bg="
+                  center / cover   /* position / size */
+                  no-repeat        /* repeat */
+                  fixed            /* attachment */
+                  padding-box      /* origin */
+                  content-box      /* clip */
+                  white            /* color */
+                "
+            >
               <StyledLogo />
-            </GatsbyLink>
+            </AniLink>
           </Heading>
           <StyledList>
             <StyledListItem>
-              <GatsbyLink to="#home">Strona główna</GatsbyLink>
+              <AniLink
+                direction="right"
+                duration={1.5}
+                cover
+                to="#home"
+                bg="
+                  center / cover   /* position / size */
+                  no-repeat        /* repeat */
+                  fixed            /* attachment */
+                  padding-box      /* origin */
+                  content-box      /* clip */
+                  white            /* color */
+                "
+              >
+                Strona główna
+              </AniLink>
             </StyledListItem>
             <StyledListItem>
-              <GatsbyLink to="#works">Prace</GatsbyLink>
+              <AniLink
+                direction="right"
+                duration={1.5}
+                cover
+                to="#works"
+                bg="
+                  center / cover   /* position / size */
+                  no-repeat        /* repeat */
+                  fixed            /* attachment */
+                  padding-box      /* origin */
+                  content-box      /* clip */
+                  white            /* color */
+                "
+              >
+                Prace
+              </AniLink>
             </StyledListItem>
             <StyledListItem>
-              <GatsbyLink to="#about">O mnie</GatsbyLink>
+              <AniLink
+                direction="right"
+                duration={1.5}
+                cover
+                to="#about"
+                bg="
+                  center / cover   /* position / size */
+                  no-repeat        /* repeat */
+                  fixed            /* attachment */
+                  padding-box      /* origin */
+                  content-box      /* clip */
+                  white            /* color */
+                "
+              >
+                O mnie
+              </AniLink>
             </StyledListItem>
           </StyledList>
         </StyledWrapper>
