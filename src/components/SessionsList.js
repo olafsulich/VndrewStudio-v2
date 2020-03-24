@@ -32,10 +32,13 @@ const StyledTextWrapper = styled.article`
   justify-content: center;
   flex-direction: column;
   padding: 4rem 2rem;
-  order: 3;
+  order: 2;
+
   @media only screen and (min-width: 700px) {
     width: 45%;
     padding: 4rem 2rem;
+    order: ${({ order }) => (order % 2 !== 0 ? '1' : '3')};
+    margin-left: ${({ order }) => (order % 2 === 0 ? '0' : '8rem')};
   }
 `;
 
@@ -62,28 +65,11 @@ const StyledImageWrapper = styled.div`
 
 const StyledContainer = styled.section`
   width: 100%;
-  height:100%;
+  height: 100%;
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
   justify-items: center;
-   @media only screen and (min-width: 700px) {
-  ${StyledWrapper}:nth-of-type(2) > ${StyledImageWrapper} {
-    order: 2;
-  }
-  ${StyledWrapper}:nth-of-type(2) > ${StyledTextWrapper} {
-    margin-left:8rem;
-    order: 1;
-  }
-  // prettier-ignore
-  ${StyledWrapper}:nth-of-type(2) > ${StyledImageWrapper} > ${Heading} {
-    right: auto;
-    left: 5%;
-  }
-  ${StyledWrapper}:nth-of-type(3) > ${StyledImageWrapper} > ${Heading} {
-    top: calc(92% );
-  }
-}
 `;
 
 const StyledLink = styled(Link)`
@@ -101,26 +87,24 @@ const StyledLink = styled(Link)`
 const SessionsList = ({ sessionItems }) => (
   <StyledContainer>
     {sessionItems.map(
-      ({
-        id,
-        title,
-        subtitle,
-        description,
-        featuredImage: { fluid },
-        slug,
-      }) => {
+      (
+        { id, title, subtitle, description, featuredImage: { fluid }, slug },
+        index
+      ) => {
         return (
-          <StyledWrapper key={slug}>
+          <StyledWrapper key={id}>
             <ParallaxProvider>
               <StyledImageWrapper>
                 <Parallax y={[-40, 40]} tagOuter="div">
                   <Image fluid={fluid} />
                 </Parallax>
-                <Heading galleryImage>{title}</Heading>
+                <Heading galleryImage order={index}>
+                  {title}
+                </Heading>
               </StyledImageWrapper>
             </ParallaxProvider>
 
-            <StyledTextWrapper>
+            <StyledTextWrapper order={index}>
               <ScrollAnimation animateIn="fadeIn">
                 <Heading gallery as="h3">
                   {subtitle}

@@ -96,9 +96,13 @@ const Heading = styled.h2`
           font-weight: 800;
           position: absolute;
           top: 92%;
-          right: 5%;
+          left: 5%;
           color: #f2f2f2;
           text-transform: uppercase;
+
+          @media only screen and (min-width: 700px) {
+            left: ${({ order }) => (order % 2 !== 0 ? '70%' : '5%')};
+          }
 
           @media only screen and (min-width: 900px) {
             font-size: 3.7rem;

@@ -13,7 +13,7 @@ const StyledGridWrapper = styled.div`
   align-items: center;
   justify-items: center;
   align-content: center;
-  justify-items: center;
+  justify-content: center;
 
   @media only screen and (min-width: 500px) {
     padding: 4rem 3rem;
