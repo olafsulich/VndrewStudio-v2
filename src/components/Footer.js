@@ -177,8 +177,14 @@ const Footer = () => {
           <Heading footer as="h4">
             Kontakt
           </Heading>
-          <Text footer>{instagramName}</Text>
-          <Text footer>{email}</Text>
+          <StyledLink
+            href="https://www.instagram.com/vndrew_photos/"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            {instagramName}
+          </StyledLink>
+          <StyledLink href="mailto:vndrewstudio@gmail.com">{email}</StyledLink>
         </StyledColumn>
       </StyledColumnsWrapper>
       <Text copyrights>

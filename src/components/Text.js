@@ -4,6 +4,7 @@ const Text = styled.p`
     font-size: 1.2rem;
     color: #B8B8B8;
     font-weight: 400;
+    
 
   ${({ main }) =>
     main &&
@@ -68,7 +69,7 @@ const Text = styled.p`
          font-size: 1.6rem;
          color: #888888;
          margin-bottom: 1.5rem;
-         background-color: #000;
+         background-color: #151615;
          opacity: 0.5;
          font-weight: 600;
 
